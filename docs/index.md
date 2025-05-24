@@ -1,6 +1,7 @@
 <h1>Welcome to my portfolio!</h1>
 
-My name is Joe Ganser and I am an experienced data technologist with a passion for solving deep & complex problems. Coming from a strong background in mathematics and physics, I transformed my skill set from academia to technology business applications. I'm passionate about technology, innovation and teaching. I've even organized free lectures/networking events at my <a href="https://hobokenlibrary.org">local library</a> to teach people how to use ChatGPT and AI tools!
+<p id="typewriter-paragraph">My name is Joe Ganser and I am an experienced data technologist with a passion for solving deep & complex problems. Coming from a strong background in mathematics and physics, I transformed my skill set from academia to technology business applications. I'm passionate about technology, innovation and teaching. I've even organized free lectures/networking events at my <a href="https://hobokenlibrary.org">local library</a> to teach people how to use ChatGPT and AI tools!
+</p>
 <center>
 <a href="https://drive.google.com/file/d/1sU_C_ag-cxLY9_xNGdLex1ZZHOtHh_jK/view?usp=sharing"><img src='../conferences/images/hudson_ai/Hudson_ai.png' style="horizontal-align:middle" width=500 height=500></a>
 </center>
