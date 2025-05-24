@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (charIndex < node.textContent.length) {
         target.appendChild(document.createTextNode(node.textContent.charAt(charIndex)));
         charIndex++;
-        setTimeout(typeNext, 35);
+        setTimeout(typeNext, 10 + Math.random()*10);
       } else {
         charIndex = 0;
         currentNodeIndex++;
