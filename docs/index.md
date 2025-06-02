@@ -1,5 +1,15 @@
 <h1>Welcome to my portfolio!</h1>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9LPYG2QQE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y9LPYG2QQE');
+</script>
+
 <p id="typewriter-paragraph">My name is Joe Ganser and I am an experienced data technologist with a passion for solving deep & complex problems. Coming from a strong background in mathematics and physics, I transformed my skill set from academia to technology business applications. I'm passionate about technology, innovation and teaching. I've even organized free lectures/networking events at my <a href="https://hobokenlibrary.org">local library</a> to teach people how to use ChatGPT and AI tools!
 </p>
 <center>
