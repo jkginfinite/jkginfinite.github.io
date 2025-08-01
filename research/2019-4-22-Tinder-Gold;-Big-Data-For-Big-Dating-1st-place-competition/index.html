@@ -1,0 +1,3574 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2022-8-2_dengu/">
+      
+      
+        <link rel="next" href="../2019-4-1-Predicting-Breathing-rate-with-smart-watch-data/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Big Data For Big Dating - 1st place Tinder Competition - Joe Ganser - Data Technologist, Teacher & Fitness junky</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#big-data-for-big-dating-winning-1st-place-in-a-data-science-competition" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Joe Ganser - Data Technologist, Teacher &amp; Fitness junky" class="md-header__button md-logo" aria-label="Joe Ganser - Data Technologist, Teacher & Fitness junky" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Joe Ganser - Data Technologist, Teacher & Fitness junky
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Big Data For Big Dating - 1st place Tinder Competition
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jkginfinite" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://docs.google.com/document/d/1fkfMSKtUvdVa63c8xjCiZcFW99xl0vZ0TyW0nPJyDlQ/edit?usp=sharing" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Curriculum Vitae
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../2023_10_24_ML_with_Spark/2023-10-24_ML_with_Spark/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../awards_CV/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accomplishments
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lectures/stats/eda/eda/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lecture Notes
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../teaching_CV/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Courses Taught
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../conferences/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scientific Conferences
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://leetcode.com/u/joeganser/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LeetCode
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://www.hackerrank.com/profile/JoeGanser" class="md-tabs__link">
+        
+  
+  
+    
+  
+  HackerRank
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://credentials.databricks.com/profile/joeganser632516/wallet" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Certifications
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Joe Ganser - Data Technologist, Teacher &amp; Fitness junky" class="md-nav__button md-logo" aria-label="Joe Ganser - Data Technologist, Teacher & Fitness junky" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Joe Ganser - Data Technologist, Teacher & Fitness junky
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jkginfinite" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/document/d/1fkfMSKtUvdVa63c8xjCiZcFW99xl0vZ0TyW0nPJyDlQ/edit?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curriculum Vitae
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Research Projects
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Research Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2023_10_24_ML_with_Spark/2023-10-24_ML_with_Spark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big Data ML on Hospital Records with Spark
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-8-2_dengu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Driven Data Competiton - Predicintg Dengu Fever
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Big Data For Big Dating - 1st place Tinder Competition
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big Data For Big Dating - 1st place Tinder Competition
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-the-dating-market-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. The Dating Market at a Glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-introducing-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Introducing the data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-problem-solving-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Problem solving strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-research-results-key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Research Results &amp; Key Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-anomalies-and-suprising-things-in-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      V. Anomalies and Suprising things in the data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-relating-the-data-to-user-experience-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI. Relating the data to user experience studies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-summarizing-the-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII. Summarizing the conclusions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-draw-backs-and-limitations-of-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIII. Draw backs and Limitations of the Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      IX. Sources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-4-1-Predicting-Breathing-rate-with-smart-watch-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Predicting Breathing rate with Smart Watch Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-3-24-Fraud-Analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Plotly to visualize American Fraud Analytics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-1-26-superconductivity-regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Superconductors - using material data to predict critical temperature
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2018-12-15-mushroom-classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mushroom Data - edible or poisonous?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2018-10-20-AMES-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real Estate Sales - A basic regression tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2017-12-21-Bitcoin-Ethereum-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2017 Bitcoin Bubble - Time series forecasting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awards_CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accomplishments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Lecture Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Lecture Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Stats with Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Stats with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_1" id="__nav_5_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exploratory Data Analysis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Exploratory Data Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/eda/eda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hypothesis Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Hypothesis Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hypothesis testing 2 slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing_notebook/hypothesis_testing_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Supervised Learning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Supervised Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_1" id="__nav_5_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Classification part 1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Classification part 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part1/Classification_part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part1/Classification_part1_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Classification part 2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Classification part 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part2/Classification_part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Regression part 1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Regression part 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part1/Regression_part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part1/Regression_part1_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Regression part 2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Regression part 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part2/Regression_part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part2/Regression_part2_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    K-Nearest Neighbors & Decision Trees
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            K-Nearest Neighbors & Decision Trees
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/KNN_%26_Decision_Trees/KNN_and_Decision_Trees_Notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/KNN_%26_Decision_Trees/KNN_and_Decision_Trees_Slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Unsupervised Learning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Unsupervised Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DB Scan
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DB Scan
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/db_scan/db_scan_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/db_scan/db_scan_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kmeans
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kmeans
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/KMeans/KMeans_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gaussian Mixture Models
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gaussian Mixture Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/GMM/slides/GMM_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/GMM/notebook/GMM_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Spark
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Intro to Spark
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Intro to Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/intro_to_spark/intro_to_spark_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/intro_to_spark/intro_to_spark_nb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/splink/splink_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Splink - Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Dynamic Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dynamic Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Intro_to_Python/dynamic_programming/dynamic_programming_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Intro_to_Python/dynamic_programming/dynamic_programming_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Courses Taught
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Courses Taught
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching_CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Teaching Experiences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Databricks Certified Instructor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Databricks Certified Instructor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.databricks.com/learn/training/home" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI 6 month bootcamp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI 6 month bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://drive.google.com/file/d/1Ipbck76ulyFwnjBtbeQ-D3FHHbRgyalH/view?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python for Data Science
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python for Data Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/ds542syllabus/ds542syllabus.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Computing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Computing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/DS610Syllabus/DS610SyllabusMaster_1_.docx.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced Programming for AI & Big Data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Programming for AI & Big Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/BDS4440_Syllabus/BDS4440_Syllabus.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scientific Conferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://leetcode.com/u/joeganser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LeetCode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hackerrank.com/profile/JoeGanser" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HackerRank
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://credentials.databricks.com/profile/joeganser632516/wallet" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certifications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-the-dating-market-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. The Dating Market at a Glance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-introducing-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. Introducing the data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-problem-solving-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      III. Problem solving strategy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-research-results-key-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV. Research Results &amp; Key Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-anomalies-and-suprising-things-in-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      V. Anomalies and Suprising things in the data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-relating-the-data-to-user-experience-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI. Relating the data to user experience studies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-summarizing-the-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII. Summarizing the conclusions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-draw-backs-and-limitations-of-the-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIII. Draw backs and Limitations of the Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      IX. Sources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="big-data-for-big-dating-winning-1st-place-in-a-data-science-competition"><strong>Big Data for Big Dating: Winning 1<sup>st</sup> place in a Data Science Competition</strong><a class="headerlink" href="#big-data-for-big-dating-winning-1st-place-in-a-data-science-competition" title="Permanent link">&para;</a></h1>
+<p><strong>By <a href="mailto:JKGProfessional@gmail.com">Joe Ganser</a></strong></p>
+<h2 id="abstract"><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>In this data driven study, analysis is made on the viral impact Tinder Gold had on the dating app market. Data records on purchase receipts were used for this analysis. Investors asked the question: why was Tinder Gold such a viral product? This study was motivated by an open source competition hosted by the company <a href='https://www.battlefin.com'>Battlefin</a> and sponsored by the investment bank <a href='https://www.jefferies.com'>Jefferies</a>. Up against 100 other competitors, I was this first place winner in Spring 2019. <em>This presentation is oriented for business developers and does not contain code.</em></p>
+<p><em>Me presenting my research at New York University. Click the picture for a google slides presentation.</em></p>
+<p align="center">
+<a href='https://docs.google.com/presentation/d/1_jlu5r18EAYQfCSrqxngtcKuNS0DCLsPf-9K4_sckw0/edit?usp=sharing'><img src='https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/NYU_presentation.jpg' width='75%' height='75%' align='center'></a></p>
+
+<p><em>MScience &amp; Battlefin presenting the awards.</em></p>
+<p align="center">
+<img src='https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/MScienceCheck.png' width='50%' height='50%' align='center'></p>
+
+<h2 id="i-the-dating-market-at-a-glance"><strong>I. The Dating Market at a Glance</strong><a class="headerlink" href="#i-the-dating-market-at-a-glance" title="Permanent link">&para;</a></h2>
+<p>Internet dating started in the early 1990s, and in recent years the phenomenon has gone from an awkward subculture to a level of normality seen in popular media. Since the invention of smart phones and tablets, we've seen a renassiance of dating products emerge that take the social paradigms to another level.</p>
+<p>Tinder, which started in 2012 (1), has created a level of market dominance that is unprecendented. It's highly addictive smart phone swiping nature has crushed it's competitors and it has gained a major advantage by being one of the first in the market place to boast such features.</p>
+<p>Despite there being a functional free version, which allows the possibility of acquiring a partner, people are still willing to pay for all sort of features. It will be clear through this analysis that the more features added to their swipe experience, the more customers are willing to pay.</p>
+<p>This analysis intends to examine and measure the impact Tinder's new product, Tinder Gold, had on both the Tinder brand and the dating market.</p>
+<p><strong>I.A Tinder Plus versus Tinder Gold</strong></p>
+<p>Tinder Plus was the original paid version of the app, which allowed users unlimited daily swipes, several "top choice" picks per day. Then came Tinder Gold. Tinder Gold allows for the following features (2):</p>
+<ul>
+<li>Unlimited swipes</li>
+<li>1 free boost a month</li>
+<li>Control age and distance</li>
+<li>Control who sees you</li>
+<li>Swipe around the world</li>
+<li>5 super free likes per day</li>
+<li>Unlimited rewinds (go back and swipe again, change your mind)</li>
+<li>No advertisements</li>
+<li><strong>Seeing who arleady likes you - the only difference between Tinder Plus and Gold</strong></li>
+</ul>
+<p>As we shall see, that one subtle difference made a huge change in multiple metrics of market performance.</p>
+<p>It should also be noted while a Tinder U product does exist, it was not specifically labeled as Tinder U in the Edison Data set. It must have been mixed in by being labeled as one of the other Tinder products.</p>
+<h2 id="ii-introducing-the-data"><strong>II. Introducing the data</strong><a class="headerlink" href="#ii-introducing-the-data" title="Permanent link">&para;</a></h2>
+<p>The original raw data source, coming from the data company Edison, consisted of email sales receipts sent to iphone and google play users. The raw data consisted of approximately 1.52 million rows, and after isolating, organizing and cleaning the receipts related to dating apps 324,667 rows were left. These receipts were collected between January 1, 2015 and September 30<sup>th</sup>, 2018 and consisted of 73,953 unique users. A total revenue of $6.12 Million was measured across the entire data set.</p>
+<p><strong>II.A Demographics on the products throughout the cleaned data set</strong></p>
+<p>The vast majority of the products in the analyzed data set were Tinder related products. There were several other products, and the breakdown across the entire data set can be seen in following table;</p>
+<p><em>Table 1</em></p>
+<table>
+<thead>
+<tr>
+<th>product</th>
+<th>Number of unique users</th>
+<th>Number of purchases</th>
+<th>$revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tinder</td>
+<td>58803</td>
+<td>252672</td>
+<td>4.39M</td>
+</tr>
+<tr>
+<td>Okcupid</td>
+<td>15721</td>
+<td>55332</td>
+<td>1.01M</td>
+</tr>
+<tr>
+<td>Match</td>
+<td>6282</td>
+<td>6321</td>
+<td>417K</td>
+</tr>
+<tr>
+<td>twoo</td>
+<td>399</td>
+<td>1308</td>
+<td>10.9K</td>
+</tr>
+<tr>
+<td>christian_mingle</td>
+<td>1234</td>
+<td>2137</td>
+<td>104K</td>
+</tr>
+<tr>
+<td>elitesingles</td>
+<td>384</td>
+<td>450</td>
+<td>48.8K</td>
+</tr>
+<tr>
+<td>jdate</td>
+<td>364</td>
+<td>789</td>
+<td>47.8K</td>
+</tr>
+<tr>
+<td>jswipe</td>
+<td>1020</td>
+<td>5468</td>
+<td>92.9K</td>
+</tr>
+<tr>
+<td>howaboutwe</td>
+<td>109</td>
+<td>190</td>
+<td>9.32K</td>
+</tr>
+</tbody>
+</table>
+<p>Later we shall see the contrast of metrics before and after August 1, 2017, the recognized launch date of Tinder Gold. But to give a simple overview of the contrast, these pie charts describe the percentage of sales (by the number of items sold, not revenue generated) attributed to each product for the two time periods.</p>
+<p><strong>II.B Pie charts of Before and after Tinder Gold launch</strong></p>
+<p>This next figure shows the volume each product took up before and after Tinder Gold's launch. For example, we can say that out of all the instances in the data where a product was purchased before 8/1/2017, 68.76% of it was attributed to Tinder Plus. Look at the changes in percentages between the two pies.</p>
+<p><em>Figure 1</em></p>
+<p><img alt="Figure 1" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/Tinder_gold_before_after_breakdown.png" /></p>
+<p><em>Note</em> Products such as elitesingles,twoo, howaboutwe, and jdate were omitted because their percentages were very small.</p>
+<p><strong>We arrive at out first conclusions:</strong> Tinder - a dating app based on smart phone swiping - is dominating the dating market. It's difference in market share must be caused by providing a uniquely different user experience from the other dating products.</p>
+<h2 id="iii-problem-solving-strategy"><strong>III. Problem solving strategy</strong><a class="headerlink" href="#iii-problem-solving-strategy" title="Permanent link">&para;</a></h2>
+<p>The general strategy on how to measure Tinder Gold's impact is approached with a fundamental principles. The idea is that, we can find and compare the performance of each dating product and their competitors based upon a few pieces of information:</p>
+<ul>
+<li>A unique identity of each customer (<code>user_id</code>)</li>
+<li>The time stamps of when they made any product purchase (<code>order_time</code>)</li>
+<li>Tracking the price they paid (<code>item_price</code>)</li>
+<li>Identifying the name of the product they purchased at each instance (<code>product_description</code>)</li>
+</ul>
+<p>Then putting these data points into a time series, we can track the evolution of products. Using these pieces of information we can engineer a few interesting features which become metrics of evaluation as seen in the goals.</p>
+<p>The metrics and conclusions will be scalable - i.e. any metric analyzed should remain the same if we increase the amout of data.</p>
+<p><strong>III.A Goals for this analysis</strong></p>
+<p>Tinder Gold's impact will be measured using the following;</p>
+<ul>
+<li>Determine and measure the changes in several metrics that Tinder Gold's affected. These metrics were;</li>
+<li>Revenue per number of daily users across time</li>
+<li>New user acquisitions per day</li>
+<li>New user acquisitions per number of daily users across time (ratio)</li>
+<li>Product repurchases per day</li>
+<li>Product repurchases per number of daily users across time (ratio)</li>
+<li>Churn instances per day</li>
+<li>Churn instances per number of daily users across time (ratio)</li>
+<li>Market volume shared by each product across time</li>
+<li>Identify relationships of causality between changes in metrics.</li>
+<li>Comment on the data by integrating user experience research.</li>
+</ul>
+<p>The Tinder products will be evaluated on these metrics, as will Okcupid since it's the only significantly measured competitor in the data.</p>
+<p>There will also be tasks that provide;
+* Identifying any situations analogous to Tinder Gold's that may be affecting the market.
+* Identifying any sampling errors that are hidden within the Edison data set itself.
+* Identifying any anomalies in the data.</p>
+<h2 id="iv-research-results-key-metrics"><strong>IV. Research Results &amp; Key Metrics</strong><a class="headerlink" href="#iv-research-results-key-metrics" title="Permanent link">&para;</a></h2>
+<p>In this section I present the key results. There are three fundamental results demonstrating the impact Tinder Gold had on the business, and their insights reinforce each other.</p>
+<p><strong>IV.A Causality in changes in market volume of Tinder Plus vs Tinder Gold</strong></p>
+<p>In this next plot, we can see the evolution of market volume of Tinder Plus versus Tinder Gold. Market volume, is defined as the percentage of sales (by number of items sold, not revenue) in the data attributed to any product on a given day. For example, on 8/1/2017 approximately 80% of all the recorded items sold on that date were Tinder Plus products (this includes the monthly, 3 month, 6 month and 12 month versions of each) (3).</p>
+<p><em>Figure 2: The darker lines are the 30day average, the faint ones are the daily values.</em>
+<img alt="Figure2" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/Volumne_PlusVsGold.png" /></p>
+<p>Below, in Figure 3, we have a scatter of the values in the plot above put against each other, AFTER the Tinder Gold launch date. In the upper left hand corner are the values of the market share of Tinder Plus (y) and Tinder Gold (x) on the Tinder Gold launch date, Aug 1 2017. On the bottom right is the very end of the time series, September 30<sup>th</sup>, 2018.</p>
+<p><em>Figure 3: X is the percentage of market volume of Tinder Gold, Y is percentage of market volume of Tinder Plus</em></p>
+<p><img alt="Figure 3" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/Regression_PlusVsGold.png" /></p>
+<p>Whats most interesting about this plot is that it that both time series are not in any way altered to become stationary (i.e. to seperate the trend from the noise). These are the actual daily volume values, not averaged ones. Using a statistical test called the <a href="https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test">Augmented Dickey Fuller test</a>, we see a cointegration of the two time series. Using the <a href="https://en.wikipedia.org/wiki/Granger_causality">Granger test</a>,we can prove a causality relationship between the growth of Tinder Gold and the atrophy of Tinder Plus. By causality, we mean predictive causality in that we can predict the values of Tinder Gold from the values of Tinder Plus. (6)(7)(8)(13)(14)(15)</p>
+<p><strong>We arrive at our second conclusions</strong>:</p>
+<ul>
+<li>The rise in sales of Tinder Gold shares a predictive causality relation (p=0.01) with a 74% drop in market volume of Tinder Plus between Aug 1 2017 and Sept 30<sup>th</sup> 2018.</li>
+<li>This is caused by giving people the ability to know who likes them back on the service (Tinder Gold's advantage).</li>
+<li>Market changes in Tinder Plus vs Tinder Gold share a causality relationship upto 17 days prior (p&lt;0.01)</li>
+<li>No significant change was seen in Tinder's top competitor, Okcupid, across the launch date.</li>
+</ul>
+<p><strong>IV.B Evolution of new customer acquisition, repeat purchases and churn instances</strong></p>
+<p>Using feature engineering, I was able to identify instances in the time series that indicated when a customer made their first purchase of a product, a repeat purchase or a churn purchase (i.e. they didn't buy the same product again for atleast 91 days, one business quarter).</p>
+<p>With these data points, I could calculate the number of such instances on a given day and compare it to the number of unique users who made purchases on that same day. i.e. for a given product</p>
+<p><img alt="ratio" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/ratio_analytics.png" /></p>
+<p><em>Note that a churn instance may simultaneously be a repeat purchase or a new purchase - but not all three!</em></p>
+<p><strong>Justification for these metrics</strong></p>
+<p>These metrics indicate the proprotions of how many customers on a given day made what kind of decision. Whats really interesting is they these metrics can provide evidence of stability in a subscription product. During product stability, the evolution of these ratios have a balance with each other. If a change in these values is noticed, as seen in the churn line of figure 4, it indicates a stimulus.</p>
+<p>These metrics are also scalable, and should be approximately the same if we increase the number of users in our data.</p>
+<p>In figure 4 we see the plot of these ratios. So on the Tinder Gold launch date, the ratio of churn (blue) purchases to number of unique users was about 0.3 - meaning if we had 100 unique customers who made purchases on that day, then 30 of those customers made a churn purchase. It then went up to around 0.4 and went even higher towards the end of the series.</p>
+<p><em>Figure 4: Note that the churn line (blue) is supposed to end early, because you want to give atleast one business quarter for identifying a churn. The thicker lines are the 30day averages, the faint ones are the daily fluctuations.</em></p>
+<p><img alt="Figure4" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/TinderPlusChurn.png" /></p>
+<p>The change in the blue churn line (see arrow) indicates that for a daily pool of Tinder Plus users, a signficant increase in the fraction of people who churned was noticed after Tinder Gold launched.</p>
+<p>By examining the evolution of daily instances of repeat purchases and new purchases of Tinder Plus, we can see a transition there are well.</p>
+<p><em>Figure 5. These are simply the average daily recorded values of new purchases and repeat purchases of Tinder Plus (not per number of customers ratio). Look at the drop after Tinder Gold launched.</em>
+<img alt="Figure5" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/Tinder_Plus_new_repeat.png" /></p>
+<p><strong>We can conclude the following</strong>;</p>
+<ul>
+<li>Tinder Plus's number of churns per daily customers increased (the daily fraction) by 77% after Tinder Gold <a href="#figurefour">(Figure 4)</a></li>
+<li>Both Tinder Plus's daily repeat purchases and new purchases (not the ratio metric) dropped by 72% after Tinder Gold launched (Figure 5).</li>
+</ul>
+<p>As for the evolution of these metrics on Tinder Gold post launch, the follwing graph is available.</p>
+<p><em>Figure 6: Note the dates on the horizontal start at the launch of Tinder Gold. The thicker lines represent the 30 day average, and the faint lines are daily fluctuations. Notice how to the lines tends towards an equilibrium in ratios as time evolves, similar to how Tinder Plus (figure 4) was before the launch date.</em>
+<img alt="Figure6" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/TinderGoldChurn.png" /></p>
+<p><strong>IV.C Measuring the change in Tinder's revenue per customer</strong></p>
+<p>Measuring the performance of individual products such as Tinder Gold and Tinder plus are important, but how well is Tinder as a brand doing? How is it changing?</p>
+<p>To answer these questions, I decided to calculate a metric that determines the ratio between all the money made by Tinder products on a given day to all the people who purchased Tinder products on that same day;</p>
+<p><img alt="rev_customer" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/revenue_per_customer.png" /></p>
+<p><strong>Justification for this metric</strong></p>
+<p>This metric is scallable and allows us to draw conclusions about the population we're sampling from. It gives critical insight as to the performance of the brand itsself, and it's evolution shows a comparitive contrast on the before and after effects of Tinder Gold.</p>
+<p><em>Figure 7: The thick line is the 30day average, the faint ones are the day to day values.</em></p>
+<p><img alt="Figure 7" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/Tinder_revenue.png" /></p>
+<p>We can see quite a change in the revenue per customer after Tinder Gold's launch. Considering the conclusion previously drawn that Tinder Gold caused a change in market volume of Tinder Plus, we can use Occam's razor to conclude that Tinder Gold also caused the increase in revenue seen here (otherwise, we'd have to assume something else caused it).</p>
+<p><strong>We can draw the following conclusions:</strong></p>
+<ul>
+<li>Tinder Gold caused a 42% increase in daily revenue for all Tinder products combined (between 8/1/2017 and 9/30/2018).</li>
+<li>Before Tinder Gold, Tinder's CAGR (compounded annual growth rate) was 8.98%. After Tinder Gold, Tinder's CAGR was 17.2%</li>
+<li>Tinder Gold improved Tinder's CAGR by 91.2%</li>
+<li>Tinder Gold took Tinder Plus's customers, and despite a decrease in sales of Tinder Plus, the overall sales of Tinder products increased.</li>
+<li>Okcupid's revenue per customer was evaluated as well, but the results did not indicate significant changes from the Tinder Gold launch.</li>
+</ul>
+<h2 id="v-anomalies-and-suprising-things-in-the-data"><strong>V. Anomalies and Suprising things in the data</strong><a class="headerlink" href="#v-anomalies-and-suprising-things-in-the-data" title="Permanent link">&para;</a></h2>
+<p>There were four anomalies in the data to be noted. One situation which is relevant to this presentation demonstrates a somewhat analogous situation to Tinder Gold's growth. The other anomalies can be found in the technical document.</p>
+<p><strong>V.A An analogy to Tinder vs the rest of the market: JDate vs JSwipe</strong></p>
+<p>JDate and JSwipe make for an interesting sub study on the effects that swipe based dating apps have on people. Because these apps are oriented to a smaller cultural subset, we can see an example somewhat isolated from the general population on the effects that swipe based dating apps have on the market.</p>
+<p>Here in figure 8 we see the market volume evolution of JDate and JSwipe across Time. Clearly this suggests a pattern - as swipe based dating apps are introduced, they go up in market volume and their direct competitors drop.</p>
+<p><em>Figure 8</em></p>
+<p><img alt="Figure8" src="https://raw.githubusercontent.com/JoeGanser/Tinder_Gold_Competition/master/files/JDate_JSwipe.png" /></p>
+<h2 id="vi-relating-the-data-to-user-experience-studies"><strong>VI. Relating the data to user experience studies</strong><a class="headerlink" href="#vi-relating-the-data-to-user-experience-studies" title="Permanent link">&para;</a></h2>
+<p>Considering the overwhelmingly obvious data that Tinder is dominating the dating sphere, it suggests that it’s providing something different from the other dating products.</p>
+<p>There is a bit of an irony in some user experience surveys. In one study on almost 9,761 college aged users who’d been on the app for at least six months, 70% of them reported they had not actually met anyone through the app (10,11). You’d think that a product would be popular because it’s achieving the result it’s advertised for, but in the artificial world of social media this doesn’t seem to be the case.</p>
+<p>What does seem to be the case is that users see Tinder more as a source of entertainment, and as a source confidence boosting/social validation. In that same user experience study, 45% of users said they were doing it for confidence boosting, and only 25% said they were seeking a partner (10,11).  Moreover, in consideration of the widely known axiom that social media is highly addictive, it’s pretty easy to call Tinder addictive with every swipe diminishing the user’s attention span. This could partially explain the major market volume gap between Tinder and its competition.</p>
+<p>Contrasting against the competition, we see that steadily popular dating sites such as Match.com actually offer money back guarantees for finding romantic partners (12). Such a bold offer could only be sustained if it was backed up its results. Yet Tinder sells more, is growing faster but rarely gets people what it’s advertised for(10,11).</p>
+<p>In reflection, one could conclude that a social media product will sell more than its competitors if it’s designed to be more addictive and provides a myriad of psycho-social stimulation. Move over, it will do so even if it doesn’t get the users the advertised result they had hoped for as often as a less stimulating product.</p>
+<h2 id="vii-summarizing-the-conclusions"><strong>VII. Summarizing the conclusions</strong><a class="headerlink" href="#vii-summarizing-the-conclusions" title="Permanent link">&para;</a></h2>
+<p>As mentioned in section 1.B, the fundamental difference between Tinder Gold and Tinder Plus was the Tinder Gold allowed users to see who liked them back. This one feature made a world of difference in the dating market, because it focuses in on a pscyhological anticipation factor that users really desire.</p>
+<p>In all we can draw the following conclusions:</p>
+<ul>
+<li>Smart phone swipe based dating apps are dominating the dating app market.</li>
+<li>Tinder Gold's distinct advantage caused a significant drop in the market share of Tinder Plus</li>
+<li>Tinder Gold caused an increase in Tinder Plus's churns.</li>
+<li>Tinder Gold didn't make signficantly measurable changes in the volume/revenue of Okcupid.</li>
+<li>Tinder Gold caused a 42% increase in the Tinder brand's revenue per customer, and is responsible for a 17.2% CAGR</li>
+<li>Tinder Gold is providing a fundamentally different kind of user experience from other dating apps.</li>
+<li>The right feature, added at the right time, can change the entire market. Sometimes all it takes is a subtle change. In the dating app market, this particularly applies when we tap into the human needs of social validation.</li>
+</ul>
+<p><em>Quod Erat Demonstrandum</em></p>
+<h2 id="viii-draw-backs-and-limitations-of-the-analysis"><strong>VIII. Draw backs and Limitations of the Analysis</strong><a class="headerlink" href="#viii-draw-backs-and-limitations-of-the-analysis" title="Permanent link">&para;</a></h2>
+<p>As with any analysis there are things that limit our analysis and make sensitive to errors. For this project, a few of these were;</p>
+<ul>
+<li>The conclusions reinforce each other; if one conclusion is wrong it draws into question the other conclusions.</li>
+<li>The source data may have been subject to a collection bias towards Tinder products.</li>
+<li>Bumble, a major competitor to Tinder, was not included in the raw data.</li>
+<li>There is a lot of misinformation on the product prices. Prices of dating products changed periodically throughout the time period studied and there isn't consistent information as to when these changes happened.</li>
+</ul>
+<h2 id="ix-sources"><strong>IX. Sources</strong><a class="headerlink" href="#ix-sources" title="Permanent link">&para;</a></h2>
+<p>[1] Tinder’s history  <a href="https://en.wikipedia.org/wiki/Tinder_(app">https://en.wikipedia.org/wiki/Tinder_(app</a>)</p>
+<p>[2] ‘Tinder Plus versus Tinder Gold’: <a href="https://www.help.tinder.com/hc/en-us/articles/115004487406-Tinder-Plus-and-Tinder-Gold-">https://www.help.tinder.com/hc/en-us/articles/115004487406-Tinder-Plus-and-Tinder-Gold-</a></p>
+<p>[3] Tinder Prices on the app store:  <a href="https://itunes.apple.com/us/app/tinder/id547702041?mt=8">https://itunes.apple.com/us/app/tinder/id547702041?mt=8</a></p>
+<p>[4] Okcupid Prices <a href="https://itunes.apple.com/us/app/okcupid-online-dating-app/id338701294?mt=8">https://itunes.apple.com/us/app/okcupid-online-dating-app/id338701294?mt=8</a></p>
+<p>[5] Match.com prices <a href="https://itunes.apple.com/us/app/match-1-dating/id305939712?mt=8">https://itunes.apple.com/us/app/match-1-dating/id305939712?mt=8</a></p>
+<p>[6] Stationarity in time series: <a href="https://www.analyticsvidhya.com/blog/2018/09/non-stationary-time-series-python/">https://www.analyticsvidhya.com/blog/2018/09/non-stationary-time-series-python/</a></p>
+<p>[7] Cointegration of time series: <a href="http://www.eco.uc3m.es/~jgonzalo/teaching/EconometriaII/cointegration.HTM">http://www.eco.uc3m.es/~jgonzalo/teaching/EconometriaII/cointegration.HTM</a></p>
+<p>[8] Granger Causality  <a href="https://www.statisticshowto.datasciencecentral.com/granger-causality/">https://www.statisticshowto.datasciencecentral.com/granger-causality/</a></p>
+<p>[9] Welch’s t-test:  <a href="https://en.wikipedia.org/wiki/Welch%27s_t-test">https://en.wikipedia.org/wiki/Welch%27s_t-test</a></p>
+<p>[10] Here's the Real Reason Why Millennials Use Tinder <a href="http://money.com/money/4713971/tinder-millennials-dating-apps/">http://money.com/money/4713971/tinder-millennials-dating-apps/</a></p>
+<p>[11] LendEdus Tinder study <a href="https://lendedu.com/blog/tinder-match-millennials/">https://lendedu.com/blog/tinder-match-millennials/</a></p>
+<p>[12] Match.coms guarantee <a href="https://www.match.com/guarantee/rules.aspx">https://www.match.com/guarantee/rules.aspx</a></p>
+<p>[13] Augmented Dickey Fuller Test <a href="https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test">https://en.wikipedia.org/wiki/Augmented_Dickey%E2%80%93Fuller_test</a></p>
+<p>[14] Granger Causality <a href="https://en.wikipedia.org/wiki/Granger_causality">https://en.wikipedia.org/wiki/Granger_causality</a></p>
+<p>[15] Granger Test for Python <a href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.grangercausalitytests.html">https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.grangercausalitytests.html</a></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../2022-8-2_dengu/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Driven Data Competiton - Predicintg Dengu Fever">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Driven Data Competiton - Predicintg Dengu Fever
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../2019-4-1-Predicting-Breathing-rate-with-smart-watch-data/" class="md-footer__link md-footer__link--next" aria-label="Next: Predicting Breathing rate with Smart Watch Data">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Predicting Breathing rate with Smart Watch Data
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jkginfinite" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/joe-ganser-aa9b8b132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "header.autohide", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

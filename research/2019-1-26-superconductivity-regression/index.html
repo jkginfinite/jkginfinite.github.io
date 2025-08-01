@@ -1,0 +1,4786 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2019-3-24-Fraud-Analytics/">
+      
+      
+        <link rel="next" href="../2018-12-15-mushroom-classification/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Superconductors - using material data to predict critical temperature - Joe Ganser - Data Technologist, Teacher & Fitness junky</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#superconductors-using-material-data-to-predict-critical-temperature" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Joe Ganser - Data Technologist, Teacher &amp; Fitness junky" class="md-header__button md-logo" aria-label="Joe Ganser - Data Technologist, Teacher & Fitness junky" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Joe Ganser - Data Technologist, Teacher & Fitness junky
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Superconductors - using material data to predict critical temperature
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jkginfinite" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://docs.google.com/document/d/1fkfMSKtUvdVa63c8xjCiZcFW99xl0vZ0TyW0nPJyDlQ/edit?usp=sharing" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Curriculum Vitae
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../2023_10_24_ML_with_Spark/2023-10-24_ML_with_Spark/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../awards_CV/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accomplishments
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lectures/stats/eda/eda/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lecture Notes
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../teaching_CV/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Courses Taught
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../conferences/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scientific Conferences
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://leetcode.com/u/joeganser/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LeetCode
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://www.hackerrank.com/profile/JoeGanser" class="md-tabs__link">
+        
+  
+  
+    
+  
+  HackerRank
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://credentials.databricks.com/profile/joeganser632516/wallet" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Certifications
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Joe Ganser - Data Technologist, Teacher &amp; Fitness junky" class="md-nav__button md-logo" aria-label="Joe Ganser - Data Technologist, Teacher & Fitness junky" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Joe Ganser - Data Technologist, Teacher & Fitness junky
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jkginfinite" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/document/d/1fkfMSKtUvdVa63c8xjCiZcFW99xl0vZ0TyW0nPJyDlQ/edit?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curriculum Vitae
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Research Projects
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Research Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2023_10_24_ML_with_Spark/2023-10-24_ML_with_Spark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big Data ML on Hospital Records with Spark
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-8-2_dengu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Driven Data Competiton - Predicintg Dengu Fever
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-4-22-Tinder-Gold%3B-Big-Data-For-Big-Dating-1st-place-competition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big Data For Big Dating - 1st place Tinder Competition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-4-1-Predicting-Breathing-rate-with-smart-watch-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Predicting Breathing rate with Smart Watch Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-3-24-Fraud-Analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Plotly to visualize American Fraud Analytics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Superconductors - using material data to predict critical temperature
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Superconductors - using material data to predict critical temperature
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-what-is-a-superconductor" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. What is a superconductor?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iiipreprocessing-the-target-variable-critical-temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      III.Preprocessing the target variable: critical temperature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ivfiltering-out-irrelevant-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV.Filtering out irrelevant features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vselecting-the-right-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      V.Selecting the right model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virandom-forest-tuning-hyperparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI.Random Forest: Tuning hyperparameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viimodel-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII.Model Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIII. Conclusions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      IX. References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2018-12-15-mushroom-classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mushroom Data - edible or poisonous?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2018-10-20-AMES-tutorial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real Estate Sales - A basic regression tutorial
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2017-12-21-Bitcoin-Ethereum-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2017 Bitcoin Bubble - Time series forecasting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awards_CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accomplishments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Lecture Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Lecture Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Stats with Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Stats with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_1" id="__nav_5_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exploratory Data Analysis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Exploratory Data Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/eda/eda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hypothesis Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Hypothesis Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hypothesis testing 2 slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing_notebook/hypothesis_testing_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Supervised Learning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Supervised Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_1" id="__nav_5_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Classification part 1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Classification part 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part1/Classification_part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part1/Classification_part1_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Classification part 2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Classification part 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part2/Classification_part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Regression part 1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Regression part 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part1/Regression_part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part1/Regression_part1_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Regression part 2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Regression part 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part2/Regression_part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part2/Regression_part2_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    K-Nearest Neighbors & Decision Trees
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            K-Nearest Neighbors & Decision Trees
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/KNN_%26_Decision_Trees/KNN_and_Decision_Trees_Notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/KNN_%26_Decision_Trees/KNN_and_Decision_Trees_Slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Unsupervised Learning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Unsupervised Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DB Scan
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DB Scan
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/db_scan/db_scan_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/db_scan/db_scan_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kmeans
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kmeans
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/KMeans/KMeans_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gaussian Mixture Models
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gaussian Mixture Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/GMM/slides/GMM_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/GMM/notebook/GMM_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Spark
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Intro to Spark
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Intro to Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/intro_to_spark/intro_to_spark_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/intro_to_spark/intro_to_spark_nb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/splink/splink_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Splink - Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Dynamic Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dynamic Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Intro_to_Python/dynamic_programming/dynamic_programming_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Intro_to_Python/dynamic_programming/dynamic_programming_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Courses Taught
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Courses Taught
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching_CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Teaching Experiences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Databricks Certified Instructor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Databricks Certified Instructor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.databricks.com/learn/training/home" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI 6 month bootcamp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI 6 month bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://drive.google.com/file/d/1Ipbck76ulyFwnjBtbeQ-D3FHHbRgyalH/view?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python for Data Science
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python for Data Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/ds542syllabus/ds542syllabus.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Computing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Computing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/DS610Syllabus/DS610SyllabusMaster_1_.docx.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced Programming for AI & Big Data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Programming for AI & Big Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/BDS4440_Syllabus/BDS4440_Syllabus.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scientific Conferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://leetcode.com/u/joeganser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LeetCode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hackerrank.com/profile/JoeGanser" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HackerRank
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://credentials.databricks.com/profile/joeganser632516/wallet" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certifications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      Abstract
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      I. Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-what-is-a-superconductor" class="md-nav__link">
+    <span class="md-ellipsis">
+      II. What is a superconductor?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iiipreprocessing-the-target-variable-critical-temperature" class="md-nav__link">
+    <span class="md-ellipsis">
+      III.Preprocessing the target variable: critical temperature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ivfiltering-out-irrelevant-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV.Filtering out irrelevant features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vselecting-the-right-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      V.Selecting the right model
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virandom-forest-tuning-hyperparameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI.Random Forest: Tuning hyperparameters
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viimodel-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII.Model Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      VIII. Conclusions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      IX. References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="superconductors-using-material-data-to-predict-critical-temperature"><strong>Superconductors - using material data to predict critical temperature</strong><a class="headerlink" href="#superconductors-using-material-data-to-predict-critical-temperature" title="Permanent link">&para;</a></h1>
+<p>By Joe Ganser</p>
+<h2 id="abstract"><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h2>
+<p>Data on superconductors was studied with the goal of predicting the critical temperature at which a material undergoes superconductivity; hence a regession task. The data initially consisted of 168 features and 21,263 rows. The goal was not to predict whether or not a material was superconductive, because all data was on superconductive materials. <a href='https://www.sciencedirect.com/science/article/pii/S0927025618304877?via%3Dihub'>Another researcher</a> had gotten a root mean squared error (RMSE) of ±9.5kelvin on this data set, and this project's goal was to out perform this metric while comparing model techniques and analyzing features. This study was able to get ±9.4Kelvin RMSE. The data is originally sourced from the <a href='https://supercon.nims.go.jp/index_en.html'>superconducting material database</a>. This paper is oriented towards an audience of scientists, and was coded in <code>python 3.6</code>.</p>
+<h2 id="i-introduction"><strong>I. Introduction</strong><a class="headerlink" href="#i-introduction" title="Permanent link">&para;</a></h2>
+<p>There were several objectives to this project:</p>
+<ul>
+<li>Predict the temperature of superconductivity with the highest possible R2 score and lowest possible RMSE</li>
+<li>Compare multiple model techniques and find the one that produces the best metrics</li>
+<li>Identify relevant and irrelevant features</li>
+<li>Ensure model validity</li>
+</ul>
+<p>The approach was to first identify the irrelevant features and discard them, followed by putting the remaining features into a bunch of models for wide comparison.</p>
+<h2 id="ii-what-is-a-superconductor"><strong>II. What is a superconductor?</strong><a class="headerlink" href="#ii-what-is-a-superconductor" title="Permanent link">&para;</a></h2>
+<p>A <a href='https://en.wikipedia.org/wiki/Superconductivity'>superconductor</a> is a material that, at a very, very low temperature allows for infinite conductivity (zero electrical resistance). Essentialy this means thats all the electrons/ions will flow on a material without any disturbance what so ever. One of the most interesting things about superconductors is that at their critical temperature they can create magnetic levitation! This is called the <a href='https://en.wikipedia.org/wiki/Meissner_effect'>Meissner effect</a>. Lexus, the car company, used this phenomenon to create a <a href='https://www.cnet.com/roadshow/news/the-lexus-hoverboard-is-real-video/'>hoverboard</a>.</p>
+<p align="center">
+<img src = 'https://raw.githubusercontent.com/JoeGanser/Superconductors_Regression/master/images/lexus-hoverboard.jpg' height='30%' width='30%'>
+</p>
+
+<p><a href='https://en.wikipedia.org/wiki/Phase_transition'><strong>Superconducting temperature</strong></a></p>
+<p>The temperature of at which a material becomes superconductive was what I was trying to predict in this analysis. So why is temperature relevant to super conductivity? To understand this, consider a familiar example of something that's the complete opposite.</p>
+<p>A toaster works using electrical resistance. In the circuit of a toaster, the electrons are forced to slow down and colide with each other, which in turn causes an accumulation of thermal energy. That thermal energy then raises the temperature, which cooks the toast.</p>
+<p>The physics of a super conductor is (sort of) like the <em>opposite</em> of a toaster. Instead of electrons bumnping into each other chaotically (creating heat), the cold causes them all move uniformly. When the temperature is low enough, the uniform motion of the electrons becomes comes very coherent, producing powerful magnetic fields.</p>
+<p>There are many materials that can support superconductivity. Each one is a combination of many different elements, and has many intrinsic properties. Thus by creating a table for each super conductor's properties, along with it's critical temperature, a regression analysis can be done.</p>
+<h2 id="iiipreprocessing-the-target-variable-critical-temperature"><strong>III.Preprocessing the target variable: critical temperature</strong><a class="headerlink" href="#iiipreprocessing-the-target-variable-critical-temperature" title="Permanent link">&para;</a></h2>
+<p>In any regression problem, you want the target variable to be as close to a normal distribution as possible. Sometimes this is possible to do, other times not. In this case I was able to transform the critical temperature to be approximately normal.</p>
+<p>Originally the data was very, very positively skewed. After a lot of trial and error, I used an exponential transformation to get the data (approximately) normal.</p>
+<p align="center">
+<img src = 'https://raw.githubusercontent.com/JoeGanser/Superconductors_Regression/master/images/Critical_temp_hist.png'>
+</p>
+<p>Unfortunately in the best fit there remained a slight skew. The highest peak wasn't simply an outlier and couldn't be dropped or imputed. Despite this, the results observed at the end were pretty good.</p>
+<h2 id="ivfiltering-out-irrelevant-features"><strong>IV.Filtering out irrelevant features</strong><a class="headerlink" href="#ivfiltering-out-irrelevant-features" title="Permanent link">&para;</a></h2>
+<p>Initially the data shape was 21263 rows by 168 features. The head of the original dataframe looked like this;</p>
+<table>
+<thead>
+<tr>
+<th>number_of_elements</th>
+<th>mean_atomic_mass</th>
+<th>wtd_mean_atomic_mass</th>
+<th>gmean_atomic_mass</th>
+<th>wtd_gmean_atomic_mass</th>
+<th>entropy_atomic_mass</th>
+<th>wtd_entropy_atomic_mass</th>
+<th>range_atomic_mass</th>
+<th>wtd_range_atomic_mass</th>
+<th>std_atomic_mass</th>
+<th>wtd_std_atomic_mass</th>
+<th>mean_fie</th>
+<th>wtd_mean_fie</th>
+<th>gmean_fie</th>
+<th>wtd_gmean_fie</th>
+<th>entropy_fie</th>
+<th>wtd_entropy_fie</th>
+<th>range_fie</th>
+<th>wtd_range_fie</th>
+<th>std_fie</th>
+<th>wtd_std_fie</th>
+<th>mean_atomic_radius</th>
+<th>wtd_mean_atomic_radius</th>
+<th>gmean_atomic_radius</th>
+<th>wtd_gmean_atomic_radius</th>
+<th>entropy_atomic_radius</th>
+<th>wtd_entropy_atomic_radius</th>
+<th>range_atomic_radius</th>
+<th>wtd_range_atomic_radius</th>
+<th>std_atomic_radius</th>
+<th>wtd_std_atomic_radius</th>
+<th>mean_Density</th>
+<th>wtd_mean_Density</th>
+<th>gmean_Density</th>
+<th>wtd_gmean_Density</th>
+<th>entropy_Density</th>
+<th>wtd_entropy_Density</th>
+<th>range_Density</th>
+<th>wtd_range_Density</th>
+<th>std_Density</th>
+<th>wtd_std_Density</th>
+<th>mean_ElectronAffinity</th>
+<th>wtd_mean_ElectronAffinity</th>
+<th>gmean_ElectronAffinity</th>
+<th>wtd_gmean_ElectronAffinity</th>
+<th>entropy_ElectronAffinity</th>
+<th>wtd_entropy_ElectronAffinity</th>
+<th>range_ElectronAffinity</th>
+<th>wtd_range_ElectronAffinity</th>
+<th>std_ElectronAffinity</th>
+<th>wtd_std_ElectronAffinity</th>
+<th>mean_FusionHeat</th>
+<th>wtd_mean_FusionHeat</th>
+<th>gmean_FusionHeat</th>
+<th>wtd_gmean_FusionHeat</th>
+<th>entropy_FusionHeat</th>
+<th>wtd_entropy_FusionHeat</th>
+<th>range_FusionHeat</th>
+<th>wtd_range_FusionHeat</th>
+<th>std_FusionHeat</th>
+<th>wtd_std_FusionHeat</th>
+<th>mean_ThermalConductivity</th>
+<th>wtd_mean_ThermalConductivity</th>
+<th>gmean_ThermalConductivity</th>
+<th>wtd_gmean_ThermalConductivity</th>
+<th>entropy_ThermalConductivity</th>
+<th>wtd_entropy_ThermalConductivity</th>
+<th>range_ThermalConductivity</th>
+<th>wtd_range_ThermalConductivity</th>
+<th>std_ThermalConductivity</th>
+<th>wtd_std_ThermalConductivity</th>
+<th>mean_Valence</th>
+<th>wtd_mean_Valence</th>
+<th>gmean_Valence</th>
+<th>wtd_gmean_Valence</th>
+<th>entropy_Valence</th>
+<th>wtd_entropy_Valence</th>
+<th>range_Valence</th>
+<th>wtd_range_Valence</th>
+<th>std_Valence</th>
+<th>wtd_std_Valence</th>
+<th>critical_temp</th>
+<th>H</th>
+<th>He</th>
+<th>Li</th>
+<th>Be</th>
+<th>B</th>
+<th>C</th>
+<th>N</th>
+<th>O</th>
+<th>F</th>
+<th>Ne</th>
+<th>Na</th>
+<th>Mg</th>
+<th>Al</th>
+<th>Si</th>
+<th>P</th>
+<th>S</th>
+<th>Cl</th>
+<th>Ar</th>
+<th>K</th>
+<th>Ca</th>
+<th>Sc</th>
+<th>Ti</th>
+<th>V</th>
+<th>Cr</th>
+<th>Mn</th>
+<th>Fe</th>
+<th>Co</th>
+<th>Ni</th>
+<th>Cu</th>
+<th>Zn</th>
+<th>Ga</th>
+<th>Ge</th>
+<th>As</th>
+<th>Se</th>
+<th>Br</th>
+<th>Kr</th>
+<th>Rb</th>
+<th>Sr</th>
+<th>Y</th>
+<th>Zr</th>
+<th>Nb</th>
+<th>Mo</th>
+<th>Tc</th>
+<th>Ru</th>
+<th>Rh</th>
+<th>Pd</th>
+<th>Ag</th>
+<th>Cd</th>
+<th>In</th>
+<th>Sn</th>
+<th>Sb</th>
+<th>Te</th>
+<th>I</th>
+<th>Xe</th>
+<th>Cs</th>
+<th>Ba</th>
+<th>La</th>
+<th>Ce</th>
+<th>Pr</th>
+<th>Nd</th>
+<th>Pm</th>
+<th>Sm</th>
+<th>Eu</th>
+<th>Gd</th>
+<th>Tb</th>
+<th>Dy</th>
+<th>Ho</th>
+<th>Er</th>
+<th>Tm</th>
+<th>Yb</th>
+<th>Lu</th>
+<th>Hf</th>
+<th>Ta</th>
+<th>W</th>
+<th>Re</th>
+<th>Os</th>
+<th>Ir</th>
+<th>Pt</th>
+<th>Au</th>
+<th>Hg</th>
+<th>Tl</th>
+<th>Pb</th>
+<th>Bi</th>
+<th>Po</th>
+<th>At</th>
+<th>Rn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>88.9444675</td>
+<td>57.862692285714296</td>
+<td>66.36159243157189</td>
+<td>36.1166119053847</td>
+<td>1.1817952393305</td>
+<td>1.06239554519617</td>
+<td>122.90607</td>
+<td>31.7949208571429</td>
+<td>51.968827786103404</td>
+<td>53.6225345301219</td>
+<td>775.425</td>
+<td>1010.26857142857</td>
+<td>718.1528999521299</td>
+<td>938.016780052204</td>
+<td>1.30596703599158</td>
+<td>0.791487788469155</td>
+<td>810.6</td>
+<td>735.9857142857139</td>
+<td>323.811807806633</td>
+<td>355.562966713294</td>
+<td>160.25</td>
+<td>105.514285714286</td>
+<td>136.126003095455</td>
+<td>84.528422716633</td>
+<td>1.2592439721428899</td>
+<td>1.2070399870146102</td>
+<td>205</td>
+<td>42.914285714285704</td>
+<td>75.23754049674942</td>
+<td>69.2355694829807</td>
+<td>4654.35725</td>
+<td>2961.5022857142894</td>
+<td>724.953210852388</td>
+<td>53.5438109235142</td>
+<td>1.03312880053102</td>
+<td>0.814598190091683</td>
+<td>8958.571</td>
+<td>1579.58342857143</td>
+<td>3306.1628967555</td>
+<td>3572.5966237083794</td>
+<td>81.8375</td>
+<td>111.72714285714301</td>
+<td>60.1231785550982</td>
+<td>99.4146820543113</td>
+<td>1.15968659338134</td>
+<td>0.7873816907632231</td>
+<td>127.05</td>
+<td>80.9871428571429</td>
+<td>51.4337118896741</td>
+<td>42.55839575195</td>
+<td>6.9055</td>
+<td>3.8468571428571403</td>
+<td>3.4794748493632697</td>
+<td>1.04098598567486</td>
+<td>1.08857534188499</td>
+<td>0.994998193254128</td>
+<td>12.878</td>
+<td>1.7445714285714298</td>
+<td>4.599064116752451</td>
+<td>4.66691955388659</td>
+<td>107.75664499999999</td>
+<td>61.0151885714286</td>
+<td>7.06248773046785</td>
+<td>0.62197948704754</td>
+<td>0.308147989812345</td>
+<td>0.262848266362233</td>
+<td>399.97342000000003</td>
+<td>57.12766857142861</td>
+<td>168.854243757651</td>
+<td>138.51716251123</td>
+<td>2.25</td>
+<td>2.25714285714286</td>
+<td>2.2133638394006403</td>
+<td>2.21978342968743</td>
+<td>1.36892236074022</td>
+<td>1.0662210317362</td>
+<td>1</td>
+<td>1.08571428571429</td>
+<td>0.43301270189221897</td>
+<td>0.43705881545081</td>
+<td>29.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>1.8</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>92.729214</td>
+<td>58.518416142857106</td>
+<td>73.13278722250651</td>
+<td>36.3966020291995</td>
+<td>1.44930919335685</td>
+<td>1.05775512271911</td>
+<td>122.90607</td>
+<td>36.161939000000004</td>
+<td>47.094633170313394</td>
+<td>53.9798696513451</td>
+<td>766.44</td>
+<td>1010.61285714286</td>
+<td>720.605510513725</td>
+<td>938.745412527433</td>
+<td>1.5441445432697298</td>
+<td>0.8070782149387309</td>
+<td>810.6</td>
+<td>743.164285714286</td>
+<td>290.183029138508</td>
+<td>354.963511171592</td>
+<td>161.2</td>
+<td>104.971428571429</td>
+<td>141.465214777999</td>
+<td>84.3701669575628</td>
+<td>1.50832754035259</td>
+<td>1.2041147982326001</td>
+<td>205</td>
+<td>50.571428571428605</td>
+<td>67.321319060161</td>
+<td>68.0088169554027</td>
+<td>5821.4858</td>
+<td>3021.01657142857</td>
+<td>1237.09508033858</td>
+<td>54.0957182556368</td>
+<td>1.3144421846210501</td>
+<td>0.9148021770663429</td>
+<td>10488.571000000002</td>
+<td>1667.3834285714302</td>
+<td>3767.4031757706202</td>
+<td>3632.64918471043</td>
+<td>90.89</td>
+<td>112.316428571429</td>
+<td>69.8333146094209</td>
+<td>101.166397739874</td>
+<td>1.42799655342352</td>
+<td>0.83866646563365</td>
+<td>127.05</td>
+<td>81.2078571428572</td>
+<td>49.438167441765096</td>
+<td>41.6676207979191</td>
+<td>7.7844</td>
+<td>3.7968571428571405</td>
+<td>4.40379049753476</td>
+<td>1.0352511158281401</td>
+<td>1.37497728009085</td>
+<td>1.07309384625263</td>
+<td>12.878</td>
+<td>1.59571428571429</td>
+<td>4.473362654648071</td>
+<td>4.60300005985449</td>
+<td>172.20531599999998</td>
+<td>61.37233142857139</td>
+<td>16.0642278788044</td>
+<td>0.6197346323305469</td>
+<td>0.847404163195705</td>
+<td>0.5677061078766371</td>
+<td>429.97342000000003</td>
+<td>51.4133828571429</td>
+<td>198.554600255545</td>
+<td>139.630922368904</td>
+<td>2.0</td>
+<td>2.25714285714286</td>
+<td>1.8881750225898</td>
+<td>2.2106794087065498</td>
+<td>1.55711309805765</td>
+<td>1.04722136819323</td>
+<td>2</td>
+<td>1.12857142857143</td>
+<td>0.6324555320336761</td>
+<td>0.468606270481621</td>
+<td>26.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.9</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>1.9</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>88.9444675</td>
+<td>57.885241857142894</td>
+<td>66.36159243157189</td>
+<td>36.1225090359592</td>
+<td>1.1817952393305</td>
+<td>0.9759804641654979</td>
+<td>122.90607</td>
+<td>35.741099</td>
+<td>51.968827786103404</td>
+<td>53.65626773209821</td>
+<td>775.425</td>
+<td>1010.82</td>
+<td>718.1528999521299</td>
+<td>939.009035665864</td>
+<td>1.30596703599158</td>
+<td>0.773620193146673</td>
+<td>810.6</td>
+<td>743.164285714286</td>
+<td>323.811807806633</td>
+<td>354.804182855034</td>
+<td>160.25</td>
+<td>104.685714285714</td>
+<td>136.126003095455</td>
+<td>84.214573243296</td>
+<td>1.2592439721428899</td>
+<td>1.13254686280436</td>
+<td>205</td>
+<td>49.31428571428571</td>
+<td>75.23754049674942</td>
+<td>67.797712320685</td>
+<td>4654.35725</td>
+<td>2999.15942857143</td>
+<td>724.953210852388</td>
+<td>53.9740223651659</td>
+<td>1.03312880053102</td>
+<td>0.760305152674073</td>
+<td>8958.571</td>
+<td>1667.3834285714302</td>
+<td>3306.1628967555</td>
+<td>3592.01928133231</td>
+<td>81.8375</td>
+<td>112.213571428571</td>
+<td>60.1231785550982</td>
+<td>101.082152388012</td>
+<td>1.15968659338134</td>
+<td>0.7860067360250121</td>
+<td>127.05</td>
+<td>81.2078571428572</td>
+<td>51.4337118896741</td>
+<td>41.63987779712121</td>
+<td>6.9055</td>
+<td>3.8225714285714303</td>
+<td>3.4794748493632697</td>
+<td>1.03743942474191</td>
+<td>1.08857534188499</td>
+<td>0.927479442031317</td>
+<td>12.878</td>
+<td>1.75714285714286</td>
+<td>4.599064116752451</td>
+<td>4.64963546519334</td>
+<td>107.75664499999999</td>
+<td>60.94376</td>
+<td>7.06248773046785</td>
+<td>0.6190946827042739</td>
+<td>0.308147989812345</td>
+<td>0.250477444193951</td>
+<td>399.97342000000003</td>
+<td>57.12766857142861</td>
+<td>168.854243757651</td>
+<td>138.54061273834998</td>
+<td>2.25</td>
+<td>2.27142857142857</td>
+<td>2.2133638394006403</td>
+<td>2.23267852196607</td>
+<td>1.36892236074022</td>
+<td>1.02917468729772</td>
+<td>1</td>
+<td>1.11428571428571</td>
+<td>0.43301270189221897</td>
+<td>0.444696640464954</td>
+<td>19.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>1.9</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>88.9444675</td>
+<td>57.8739670714286</td>
+<td>66.36159243157189</td>
+<td>36.1195603503211</td>
+<td>1.1817952393305</td>
+<td>1.0222908923957</td>
+<td>122.90607</td>
+<td>33.7680099285714</td>
+<td>51.968827786103404</td>
+<td>53.63940496787</td>
+<td>775.425</td>
+<td>1010.54428571429</td>
+<td>718.1528999521299</td>
+<td>938.512776724546</td>
+<td>1.30596703599158</td>
+<td>0.7832066603612908</td>
+<td>810.6</td>
+<td>739.575</td>
+<td>323.811807806633</td>
+<td>355.18388442194396</td>
+<td>160.25</td>
+<td>105.1</td>
+<td>136.126003095455</td>
+<td>84.371352045645</td>
+<td>1.2592439721428899</td>
+<td>1.17303291789271</td>
+<td>205</td>
+<td>46.11428571428571</td>
+<td>75.23754049674942</td>
+<td>68.52166497852029</td>
+<td>4654.35725</td>
+<td>2980.33085714286</td>
+<td>724.953210852388</td>
+<td>53.758486291021796</td>
+<td>1.03312880053102</td>
+<td>0.7888885322214609</td>
+<td>8958.571</td>
+<td>1623.48342857143</td>
+<td>3306.1628967555</td>
+<td>3582.3705966440502</td>
+<td>81.8375</td>
+<td>111.970357142857</td>
+<td>60.1231785550982</td>
+<td>100.24495020209</td>
+<td>1.15968659338134</td>
+<td>0.7869004893749151</td>
+<td>127.05</td>
+<td>81.0975</td>
+<td>51.4337118896741</td>
+<td>42.1023442240235</td>
+<td>6.9055</td>
+<td>3.83471428571429</td>
+<td>3.4794748493632697</td>
+<td>1.0392111922717702</td>
+<td>1.08857534188499</td>
+<td>0.96403104867923</td>
+<td>12.878</td>
+<td>1.7445714285714298</td>
+<td>4.599064116752451</td>
+<td>4.658301352402599</td>
+<td>107.75664499999999</td>
+<td>60.97947428571429</td>
+<td>7.06248773046785</td>
+<td>0.6205354084838871</td>
+<td>0.308147989812345</td>
+<td>0.257045108326848</td>
+<td>399.97342000000003</td>
+<td>57.12766857142861</td>
+<td>168.854243757651</td>
+<td>138.528892724768</td>
+<td>2.25</td>
+<td>2.26428571428571</td>
+<td>2.2133638394006403</td>
+<td>2.2262216392083</td>
+<td>1.36892236074022</td>
+<td>1.04883427304761</td>
+<td>1</td>
+<td>1.1</td>
+<td>0.43301270189221897</td>
+<td>0.440952123830019</td>
+<td>22.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.15</td>
+<td>1.85</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>88.9444675</td>
+<td>57.840142714285705</td>
+<td>66.36159243157189</td>
+<td>36.11071573753821</td>
+<td>1.1817952393305</td>
+<td>1.12922373013507</td>
+<td>122.90607</td>
+<td>27.8487427142857</td>
+<td>51.968827786103404</td>
+<td>53.5887706050743</td>
+<td>775.425</td>
+<td>1009.7171428571401</td>
+<td>718.1528999521299</td>
+<td>937.025572960086</td>
+<td>1.30596703599158</td>
+<td>0.8052296408133571</td>
+<td>810.6</td>
+<td>728.8071428571429</td>
+<td>323.811807806633</td>
+<td>356.31928137213</td>
+<td>160.25</td>
+<td>106.342857142857</td>
+<td>136.126003095455</td>
+<td>84.8434418389765</td>
+<td>1.2592439721428899</td>
+<td>1.26119371912948</td>
+<td>205</td>
+<td>36.514285714285705</td>
+<td>75.23754049674942</td>
+<td>70.63444843787241</td>
+<td>4654.35725</td>
+<td>2923.8451428571398</td>
+<td>724.953210852388</td>
+<td>53.1170285737926</td>
+<td>1.03312880053102</td>
+<td>0.859810869291435</td>
+<td>8958.571</td>
+<td>1491.78342857143</td>
+<td>3306.1628967555</td>
+<td>3552.6686635803203</td>
+<td>81.8375</td>
+<td>111.24071428571399</td>
+<td>60.1231785550982</td>
+<td>97.7747186271033</td>
+<td>1.15968659338134</td>
+<td>0.7873961825201741</td>
+<td>127.05</td>
+<td>80.76642857142859</td>
+<td>51.4337118896741</td>
+<td>43.4520592088545</td>
+<td>6.9055</td>
+<td>3.8711428571428597</td>
+<td>3.4794748493632697</td>
+<td>1.04454467078021</td>
+<td>1.08857534188499</td>
+<td>1.04496953590973</td>
+<td>12.878</td>
+<td>1.7445714285714298</td>
+<td>4.599064116752451</td>
+<td>4.6840139510763095</td>
+<td>107.75664499999999</td>
+<td>61.0866171428571</td>
+<td>7.06248773046785</td>
+<td>0.624877733754845</td>
+<td>0.308147989812345</td>
+<td>0.272819938850094</td>
+<td>399.97342000000003</td>
+<td>57.12766857142861</td>
+<td>168.854243757651</td>
+<td>138.493671473918</td>
+<td>2.25</td>
+<td>2.24285714285714</td>
+<td>2.2133638394006403</td>
+<td>2.20696281450132</td>
+<td>1.36892236074022</td>
+<td>1.0960519179005401</td>
+<td>1</td>
+<td>1.05714285714286</td>
+<td>0.43301270189221897</td>
+<td>0.42880945770867496</td>
+<td>23.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>1.7</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Thus, several steps were taken to eliminate the irrelevant features. Specifically:</p>
+<ul>
+<li>Dropping features that varied 5% of less across all rows (using <code>VarianceThreshold</code>)</li>
+<li>Dropping duplicated features (using <code>.transpose().drop_duplicates(keep='first').transpose()</code>)</li>
+<li>Dropping features with a very small correlation with the target variable; less than abs(±0.1)</li>
+<li>Dropping features that were highly correlated with each other, greater than abs(±0.8)</li>
+</ul>
+<p>It was concluded that 132 features out of the original 168 had very little relevance. </p>
+<p>The data that remained, which would be used for modelling, had 36 features and 21263 rows.</p>
+<p>The head of the cleaned dataframe was;</p>
+<table>
+<thead>
+<tr>
+<th>number_of_elements</th>
+<th>mean_atomic_mass</th>
+<th>range_atomic_mass</th>
+<th>wtd_range_atomic_mass</th>
+<th>mean_fie</th>
+<th>wtd_mean_fie</th>
+<th>wtd_entropy_fie</th>
+<th>range_fie</th>
+<th>wtd_range_fie</th>
+<th>mean_atomic_radius</th>
+<th>wtd_range_atomic_radius</th>
+<th>mean_Density</th>
+<th>range_Density</th>
+<th>mean_ElectronAffinity</th>
+<th>wtd_mean_ElectronAffinity</th>
+<th>range_ElectronAffinity</th>
+<th>wtd_range_ElectronAffinity</th>
+<th>mean_FusionHeat</th>
+<th>range_FusionHeat</th>
+<th>mean_ThermalConductivity</th>
+<th>wtd_mean_ThermalConductivity</th>
+<th>gmean_ThermalConductivity</th>
+<th>wtd_entropy_ThermalConductivity</th>
+<th>range_ThermalConductivity</th>
+<th>range_Valence</th>
+<th>wtd_range_Valence</th>
+<th>critical_temp</th>
+<th>O</th>
+<th>S</th>
+<th>Ca</th>
+<th>Cu</th>
+<th>Sr</th>
+<th>Y</th>
+<th>Ba</th>
+<th>Tl</th>
+<th>Bi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4.0</td>
+<td>88.9444675</td>
+<td>122.90607</td>
+<td>31.7949208571429</td>
+<td>775.425</td>
+<td>1010.26857142857</td>
+<td>0.791487788469155</td>
+<td>810.6</td>
+<td>735.9857142857139</td>
+<td>160.25</td>
+<td>42.914285714285704</td>
+<td>4654.35725</td>
+<td>8958.571</td>
+<td>81.8375</td>
+<td>111.72714285714301</td>
+<td>127.05</td>
+<td>80.9871428571429</td>
+<td>6.9055</td>
+<td>12.878</td>
+<td>107.75664499999999</td>
+<td>61.0151885714286</td>
+<td>7.06248773046785</td>
+<td>0.262848266362233</td>
+<td>399.97342000000003</td>
+<td>1.0</td>
+<td>1.08571428571429</td>
+<td>29.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.2</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td>92.729214</td>
+<td>122.90607</td>
+<td>36.161939000000004</td>
+<td>766.44</td>
+<td>1010.61285714286</td>
+<td>0.8070782149387309</td>
+<td>810.6</td>
+<td>743.164285714286</td>
+<td>161.2</td>
+<td>50.571428571428605</td>
+<td>5821.4858</td>
+<td>10488.571000000002</td>
+<td>90.89</td>
+<td>112.316428571429</td>
+<td>127.05</td>
+<td>81.2078571428572</td>
+<td>7.7844</td>
+<td>12.878</td>
+<td>172.20531599999998</td>
+<td>61.37233142857139</td>
+<td>16.0642278788044</td>
+<td>0.5677061078766371</td>
+<td>429.97342000000003</td>
+<td>2.0</td>
+<td>1.12857142857143</td>
+<td>26.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.9</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>88.9444675</td>
+<td>122.90607</td>
+<td>35.741099</td>
+<td>775.425</td>
+<td>1010.82</td>
+<td>0.773620193146673</td>
+<td>810.6</td>
+<td>743.164285714286</td>
+<td>160.25</td>
+<td>49.31428571428571</td>
+<td>4654.35725</td>
+<td>8958.571</td>
+<td>81.8375</td>
+<td>112.213571428571</td>
+<td>127.05</td>
+<td>81.2078571428572</td>
+<td>6.9055</td>
+<td>12.878</td>
+<td>107.75664499999999</td>
+<td>60.94376</td>
+<td>7.06248773046785</td>
+<td>0.250477444193951</td>
+<td>399.97342000000003</td>
+<td>1.0</td>
+<td>1.11428571428571</td>
+<td>19.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>88.9444675</td>
+<td>122.90607</td>
+<td>33.7680099285714</td>
+<td>775.425</td>
+<td>1010.54428571429</td>
+<td>0.7832066603612908</td>
+<td>810.6</td>
+<td>739.575</td>
+<td>160.25</td>
+<td>46.11428571428571</td>
+<td>4654.35725</td>
+<td>8958.571</td>
+<td>81.8375</td>
+<td>111.970357142857</td>
+<td>127.05</td>
+<td>81.0975</td>
+<td>6.9055</td>
+<td>12.878</td>
+<td>107.75664499999999</td>
+<td>60.97947428571429</td>
+<td>7.06248773046785</td>
+<td>0.257045108326848</td>
+<td>399.97342000000003</td>
+<td>1.0</td>
+<td>1.1</td>
+<td>22.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.15</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>88.9444675</td>
+<td>122.90607</td>
+<td>27.8487427142857</td>
+<td>775.425</td>
+<td>1009.7171428571401</td>
+<td>0.8052296408133571</td>
+<td>810.6</td>
+<td>728.8071428571429</td>
+<td>160.25</td>
+<td>36.514285714285705</td>
+<td>4654.35725</td>
+<td>8958.571</td>
+<td>81.8375</td>
+<td>111.24071428571399</td>
+<td>127.05</td>
+<td>80.76642857142859</td>
+<td>6.9055</td>
+<td>12.878</td>
+<td>107.75664499999999</td>
+<td>61.0866171428571</td>
+<td>7.06248773046785</td>
+<td>0.272819938850094</td>
+<td>399.97342000000003</td>
+<td>1.0</td>
+<td>1.05714285714286</td>
+<td>23.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.3</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vselecting-the-right-model"><strong>V.Selecting the right model</strong><a class="headerlink" href="#vselecting-the-right-model" title="Permanent link">&para;</a></h2>
+<p>Seven different types of regression were performed on the data, with the intention of simply estimating the performance of each one without tuning hyperparameters. The metrics of evaluation for each one were the R2 score and the root mean squared error (RMSE). I also measured the time required for each model to fit and predict the data. After all the models and metrics were observed, the best performing one was then selected hyperparameter tuning.</p>
+<ul>
+<li>Ordinary Least Squares</li>
+<li>Ridge Regression</li>
+<li>Lasso Regression</li>
+<li>Elastic Net regression</li>
+<li>Bayesian Ridge</li>
+<li>K-nearest neighbors regression</li>
+<li>Random Forest Regression</li>
+</ul>
+<p>The process of evaluating the models was done by a for loop. At each loop, a sequentially increasing number of features from the data was used on all the models. The order of the features fed into the models was based upon the magnitude of correlation each feature had with the critical_temperature. Hence the first feature used was <code>range_ThermalConductivity</code> which had a correlation of 0.687654, and the last feature was <code>mean_fie</code> which had a correlation of 0.102268. The loop passed through all 36 features. The first iteration had the first feature, the second had the first two features, the third had the first three, and so on. <em>Each model was initially fit without tuning hyperparameters</em>.</p>
+<p>In code, the structure was;</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">#get the correlation of each feature with the target variable</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">corr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">()[</span><span class="s1">&#39;critical_temp&#39;</span><span class="p">])</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">#get the absolute value of the correlation</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">corr</span><span class="p">[</span><span class="s1">&#39;abs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">corr</span><span class="p">[</span><span class="s1">&#39;critical_temp&#39;</span><span class="p">])</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">#sort the values by their absolute value, in descending order</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">corr</span> <span class="o">=</span> <span class="n">corr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;abs&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1">#loop through the rows of the corr dataframe, getting each feature sequentially</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">corr</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="c1">#add more features iteratively &amp; cumulatively, in order of correlation magnitude</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">corr</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="n">row</span><span class="p">])</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="c1">#use all those features up to that point</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="c1">#fit/train the model</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="c1">#then do RMSE and R2 scoring</span>
+</span></code></pre></div>
+<p><em>See the <a href="#codelinks">links to coded notebooks</a> for actual code</em></p>
+<p>At each iteration the seven models were fit on a 70-30 train test split. The R2 and RMSE were then measured.</p>
+<p>Graphing the evaluation metrics of each model as a function of the number of features used, we have;</p>
+<p align="center">
+<img src='https://raw.githubusercontent.com/JoeGanser/Superconductors_Regression/master/images/Model_Comparison.png'>
+</p>
+<p>The best performance metrics by each model were <em>(without tuning hyperparameters)</em>;</p>
+<table>
+<thead>
+<tr>
+<th>model</th>
+<th>RMSE</th>
+<th>R2 score</th>
+<th># of features used</th>
+<th>time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RandomForestRegressor</td>
+<td>10.3001</td>
+<td>0.9104</td>
+<td>30</td>
+<td>1.6523</td>
+</tr>
+<tr>
+<td>KNN</td>
+<td>15.5705</td>
+<td>0.7917</td>
+<td>14</td>
+<td>0.0596</td>
+</tr>
+<tr>
+<td>BayesianRidge</td>
+<td>20.5437</td>
+<td>0.6363</td>
+<td>27</td>
+<td>0.0167</td>
+</tr>
+<tr>
+<td>Ridge</td>
+<td>20.5642</td>
+<td>0.6356</td>
+<td>27</td>
+<td>0.0061</td>
+</tr>
+<tr>
+<td>OLS</td>
+<td>20.5645</td>
+<td>0.6356</td>
+<td>27</td>
+<td>0.0123</td>
+</tr>
+<tr>
+<td>ElasticNet</td>
+<td>22.9051</td>
+<td>0.5479</td>
+<td>27</td>
+<td>0.0153</td>
+</tr>
+<tr>
+<td>Lasso</td>
+<td>23.5355</td>
+<td>0.5227</td>
+<td>27</td>
+<td>0.0145</td>
+</tr>
+</tbody>
+</table>
+<p>Thus, the best performing model (Random Forest regressor) was then fine tuned with it's hyperparameters.</p>
+<h2 id="virandom-forest-tuning-hyperparameters"><strong>VI.Random Forest: Tuning hyperparameters</strong><a class="headerlink" href="#virandom-forest-tuning-hyperparameters" title="Permanent link">&para;</a></h2>
+<p>Because the main goal is to get the most accurate conclusions about superconductors, accuracy, in this context, is more important than efficiency. Hence, despite random forest regressor being the slowest model to fit the data (over 1 second), it was chosen to be the most important because it had the lowest loss function.</p>
+<p>The hyperparameter that was tuned was the number of decision trees in the random forest. To do this,I again used a trial and error approach where I cycled through a range of forest sizes. In conjunction, I also tried using different 'max feature' parameters, specifically <code>log2</code>, <code>sqrt</code> and the default.</p>
+<p align="center">
+<img src='https://raw.githubusercontent.com/JoeGanser/Superconductors_Regression/master/images/fitting_rf.png'>
+</p>
+
+<p>After lots of trial and error, a RMSE of ±9.396Kelvin was found, before tuning it was ±10.3Kelvin.</p>
+<h2 id="viimodel-validation"><strong>VII.Model Validation</strong><a class="headerlink" href="#viimodel-validation" title="Permanent link">&para;</a></h2>
+<p>As in any regression analysis, R2 score and RMSE are not the only standards of evaluation. Examining the plot of the predicted values versus actual values is important, as is looking for normality and homoskedascity.</p>
+<p>The plot of the predicted temperatures versus actual temperature was</p>
+<p align="center">
+<img src='https://raw.githubusercontent.com/JoeGanser/Superconductors_Regression/master/images/predict_vs_test.png' height='30%' width='30%'>
+</p>
+
+<p><strong>Normality of errors &amp; Homoskedascity</strong></p>
+<p>Using seaborn's <code>distplot</code> and <code>probplot</code> functions, I could plot the distribution of errors as well as their Q-Q plots (for both the train sets and the test sets). Approximately normality was observed.</p>
+<p align="center">
+<img src='https://raw.githubusercontent.com/JoeGanser/Superconductors_Regression/master/images/train_test_errors.png' height='70%' width='70%'></p>
+
+<p><strong>Feature Importance</strong></p>
+<p>One of the more convenient things about the random forest package is it does feature importance analysis automatically. Here, we can see the relative importances of each measure.</p>
+<p align="center">
+<img src='https://raw.githubusercontent.com/JoeGanser/Superconductors_Regression/master/images/rf_feature_importances.png'>
+</p>
+
+<h2 id="viii-conclusions"><strong>VIII. Conclusions</strong><a class="headerlink" href="#viii-conclusions" title="Permanent link">&para;</a></h2>
+<p><a href='https://www.sciencedirect.com/science/article/pii/S0927025618304877?via%3Dihub'>The other researchers</a> that analyzed this data concluded that the important features extracted were ones based on thermal conductivity, atomic radius, valence, electron affinity, and atomic mass. In the graph above we can the same results, with a few extra important features such as the presence of Copper, Oxygen, Barium, the number of elements in the material, et. al. Perhaps it is these few extras I observed that allowed me to get a RMSE of 9.4Kelvin, which is lower than the other research's RMSE of 9.5Kelvin.</p>
+<div id='codelinks'></div>
+
+<h2 id="ix-references"><strong>IX. References</strong><a class="headerlink" href="#ix-references" title="Permanent link">&para;</a></h2>
+<p><strong>Links to coded notebooks</strong></p>
+<ul>
+<li><a href='https://github.com/JoeGanser/Superconductors_Regression/blob/master/coded_notebooks/Normalize_Target.ipynb'>Pre-processing the target variable</a></li>
+<li><a href='https://github.com/JoeGanser/Superconductors_Regression/blob/master/coded_notebooks/Feature_Filtration.ipynb'>Filtering out irrelevant features</a></li>
+<li><a href='https://github.com/JoeGanser/Superconductors_Regression/blob/master/coded_notebooks/Model_Comparison_fitted_target.ipynb'>Selecting the right model</a></li>
+<li><a href='https://github.com/JoeGanser/Superconductors_Regression/blob/master/coded_notebooks/Tuning_Random_Forest.ipynb'>Tuning Random Forest</a></li>
+<li><a href='https://github.com/JoeGanser/Superconductors_Regression/blob/master/coded_notebooks/prediction_errors.ipynb'>Analyzing prediction errors</a></li>
+<li><a href='https://github.com/JoeGanser/Superconductors_Regression/blob/master/coded_notebooks/prediction_errors.ipynb'>Identifying important features</a></li>
+</ul>
+<p><strong>Sources/Links</strong></p>
+<ul>
+<li><a href='https://www.sciencedirect.com/science/article/pii/S0927025618304877?via%3Dihub'>A data-driven statistical model for predicting the critical temperature of a superconductor, by Kam Hamidieh</a><ul>
+<li>This was the other research I wanted to compare to.</li>
+</ul>
+</li>
+<li><a href ="https://archive.ics.uci.edu/ml/datasets/Superconductivty+Data#">UCI Machine learning repository on superconducting data</a><ul>
+<li>The data can be downloaded from here.</li>
+</ul>
+</li>
+<li><a href ="https://supercon.nims.go.jp/index_en.html">Super conducting material database</a><ul>
+<li>From the National Institute of Material Science; the organization that collected the data</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../2019-3-24-Fraud-Analytics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Using Plotly to visualize American Fraud Analytics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Using Plotly to visualize American Fraud Analytics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../2018-12-15-mushroom-classification/" class="md-footer__link md-footer__link--next" aria-label="Next: Mushroom Data - edible or poisonous?">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Mushroom Data - edible or poisonous?
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jkginfinite" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/joe-ganser-aa9b8b132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "header.autohide", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,6537 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2018-12-15-mushroom-classification/">
+      
+      
+        <link rel="next" href="../2017-12-21-Bitcoin-Ethereum-timeseries/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Real Estate Sales - A basic regression tutorial - Joe Ganser - Data Technologist, Teacher & Fitness junky</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config",""),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#teaching-regression-a-basic-tutorial-on-how-to-build-a-regression-model-from-start-to-finish" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Joe Ganser - Data Technologist, Teacher &amp; Fitness junky" class="md-header__button md-logo" aria-label="Joe Ganser - Data Technologist, Teacher & Fitness junky" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Joe Ganser - Data Technologist, Teacher & Fitness junky
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Real Estate Sales - A basic regression tutorial
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/jkginfinite" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://docs.google.com/document/d/1fkfMSKtUvdVa63c8xjCiZcFW99xl0vZ0TyW0nPJyDlQ/edit?usp=sharing" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Curriculum Vitae
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../2023_10_24_ML_with_Spark/2023-10-24_ML_with_Spark/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Research Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../awards_CV/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accomplishments
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../lectures/stats/eda/eda/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Lecture Notes
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../teaching_CV/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Courses Taught
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../conferences/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Scientific Conferences
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://leetcode.com/u/joeganser/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LeetCode
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://www.hackerrank.com/profile/JoeGanser" class="md-tabs__link">
+        
+  
+  
+    
+  
+  HackerRank
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://credentials.databricks.com/profile/joeganser632516/wallet" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Certifications
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Joe Ganser - Data Technologist, Teacher &amp; Fitness junky" class="md-nav__button md-logo" aria-label="Joe Ganser - Data Technologist, Teacher & Fitness junky" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+  <path d="M3.136,17.387l0,42.932l42.932,21.467l-42.932,-64.399Z" />
+  <path d="M21.91,8l42.933,64.398l-18.775,9.388l-42.932,-64.399l18.774,-9.387Z" style="fill-opacity: 0.5" />
+  <path d="M67.535,17.387l-27.262,18.156l21.878,32.818l5.384,2.691l0,-53.665Z" />
+  <path d="M67.535,17.387l0,53.666l18.774,-9.388l0,-53.665l-18.774,9.387Z" style="fill-opacity: 0.25" />
+</svg>
+
+    </a>
+    Joe Ganser - Data Technologist, Teacher & Fitness junky
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jkginfinite" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.google.com/document/d/1fkfMSKtUvdVa63c8xjCiZcFW99xl0vZ0TyW0nPJyDlQ/edit?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Curriculum Vitae
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Research Projects
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Research Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2023_10_24_ML_with_Spark/2023-10-24_ML_with_Spark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big Data ML on Hospital Records with Spark
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2022-8-2_dengu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Driven Data Competiton - Predicintg Dengu Fever
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-4-22-Tinder-Gold%3B-Big-Data-For-Big-Dating-1st-place-competition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Big Data For Big Dating - 1st place Tinder Competition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-4-1-Predicting-Breathing-rate-with-smart-watch-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Predicting Breathing rate with Smart Watch Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-3-24-Fraud-Analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Plotly to visualize American Fraud Analytics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2019-1-26-superconductivity-regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Superconductors - using material data to predict critical temperature
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2018-12-15-mushroom-classification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mushroom Data - edible or poisonous?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Real Estate Sales - A basic regression tutorial
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real Estate Sales - A basic regression tutorial
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#iintroduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      I.Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iiexploratory-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      II.Exploratory Data Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iiifeature-engineering-data-cleaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      III.Feature engineering &amp; Data Cleaning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ivfeature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV.Feature Selection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmodel-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      V.Model Building
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vimodel-development-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI.Model Development &amp; Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viisources-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII.Sources &amp; Credits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2017-12-21-Bitcoin-Ethereum-timeseries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2017 Bitcoin Bubble - Time series forecasting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awards_CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Accomplishments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Lecture Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Lecture Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Stats with Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Stats with Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_1" id="__nav_5_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exploratory Data Analysis
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Exploratory Data Analysis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/eda/eda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hypothesis Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Hypothesis Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Intro slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hypothesis testing 2 slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/stats/hypothesis_testing/hypothesis_testing_notebook/hypothesis_testing_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Supervised Learning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Supervised Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_1" id="__nav_5_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Classification part 1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Classification part 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part1/Classification_part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part1/Classification_part1_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Classification part 2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Classification part 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/classification_part2/Classification_part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Regression part 1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Regression part 1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part1/Regression_part1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part1/Regression_part1_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Regression part 2
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Regression part 2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part2/Regression_part2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/Regression_part2/Regression_part2_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_5" id="__nav_5_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    K-Nearest Neighbors & Decision Trees
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            K-Nearest Neighbors & Decision Trees
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/KNN_%26_Decision_Trees/KNN_and_Decision_Trees_Notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/supervised_learning/KNN_%26_Decision_Trees/KNN_and_Decision_Trees_Slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Unsupervised Learning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Unsupervised Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DB Scan
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DB Scan
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/db_scan/db_scan_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/db_scan/db_scan_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kmeans
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kmeans
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/KMeans/KMeans_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_3" id="__nav_5_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Gaussian Mixture Models
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Gaussian Mixture Models
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/GMM/slides/GMM_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/unsupervised_learning/GMM/notebook/GMM_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Spark
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_1" id="__nav_5_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Intro to Spark
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Intro to Spark
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/intro_to_spark/intro_to_spark_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/intro_to_spark/intro_to_spark_nb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/spark/splink/splink_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Splink - Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4_3" id="__nav_5_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Dynamic Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Dynamic Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Intro_to_Python/dynamic_programming/dynamic_programming_slides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lectures/Intro_to_Python/dynamic_programming/dynamic_programming_notebook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Courses Taught
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Courses Taught
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching_CV/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Teaching Experiences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Databricks Certified Instructor
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Databricks Certified Instructor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.databricks.com/learn/training/home" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI 6 month bootcamp
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            AI 6 month bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://drive.google.com/file/d/1Ipbck76ulyFwnjBtbeQ-D3FHHbRgyalH/view?usp=sharing" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python for Data Science
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python for Data Science
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/ds542syllabus/ds542syllabus.pdf" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Big Data Computing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            Big Data Computing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/DS610Syllabus/DS610SyllabusMaster_1_.docx.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Advanced Programming for AI & Big Data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Programming for AI & Big Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teaching/syllabi/BDS4440_Syllabus/BDS4440_Syllabus.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Syllabus
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../conferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scientific Conferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://leetcode.com/u/joeganser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LeetCode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.hackerrank.com/profile/JoeGanser" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HackerRank
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://credentials.databricks.com/profile/joeganser632516/wallet" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Certifications
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#iintroduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      I.Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iiexploratory-data-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      II.Exploratory Data Analysis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iiifeature-engineering-data-cleaning" class="md-nav__link">
+    <span class="md-ellipsis">
+      III.Feature engineering &amp; Data Cleaning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ivfeature-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      IV.Feature Selection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vmodel-building" class="md-nav__link">
+    <span class="md-ellipsis">
+      V.Model Building
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vimodel-development-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      VI.Model Development &amp; Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viisources-credits" class="md-nav__link">
+    <span class="md-ellipsis">
+      VII.Sources &amp; Credits
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="teaching-regression-a-basic-tutorial-on-how-to-build-a-regression-model-from-start-to-finish"><strong>Teaching regression: A basic tutorial on how to build a regression model from start to finish</strong><a class="headerlink" href="#teaching-regression-a-basic-tutorial-on-how-to-build-a-regression-model-from-start-to-finish" title="Permanent link">&para;</a></h1>
+<p>By Joe Ganser</p>
+<p><a href='https://github.com/JoeGanser/Regression_Teaching_Tutorial'>Link to the github repo</a></p>
+<h2 id="iintroduction"><strong>I.Introduction</strong><a class="headerlink" href="#iintroduction" title="Permanent link">&para;</a></h2>
+<p>In this notebook, I will be creating a simple work flow tutorial that allows beginner data science students to go through the process of building a regression model. This is for students who have completed most of my introduction to data science class and have basic familiarity with data science.</p>
+<p><strong>Background info</strong></p>
+<p>The data set we'll be working with is well known and studied. It describes real-estate sales on houses in AMES Iowa, and the target variable we're trying to predict is the price of a home. Lets load the data and begin exploring. A lot of <a href="https://www.kaggle.com">kaggle</a> projects have been made from it, and you can find them <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques">here</a>.</p>
+<h2 id="iiexploratory-data-analysis"><strong>II.Exploratory Data Analysis</strong><a class="headerlink" href="#iiexploratory-data-analysis" title="Permanent link">&para;</a></h2>
+<p>In any data science project, we always start of by getting a good glimpse of what kind of data we're looking at. This is called "exploratory data analysis" (EDA). There are a few things we need to look at at our first round of EDA:</p>
+<ol>
+<li>The number of rows/columns.</li>
+<li>The data types on each columns.</li>
+<li>Get the min, max, mean values of each column</li>
+<li>The number of missing values.</li>
+</ol>
+<p>Lets start by loading the dataset, and observing it's dimensions. Our target variable <code>y</code> is the house price, and the rest of the variables (<code>X</code>) are our predictors. We want to load the file <code>train.csv</code> because it will train our models.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">#Type your solution here</span>
+</span></code></pre></div>
+<p>Now split the data set into a predictor table (<code>X</code>) and a target table <code>y</code></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">#Type your solution here</span>
+</span></code></pre></div>
+<p>Now look at the head of the predictor table, and print it's shape.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>(1460, 80)
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>MSSubClass</th>
+<th>MSZoning</th>
+<th>LotFrontage</th>
+<th>LotArea</th>
+<th>Street</th>
+<th>Alley</th>
+<th>LotShape</th>
+<th>LandContour</th>
+<th>Utilities</th>
+<th>LotConfig</th>
+<th>LandSlope</th>
+<th>Neighborhood</th>
+<th>Condition1</th>
+<th>Condition2</th>
+<th>BldgType</th>
+<th>HouseStyle</th>
+<th>OverallQual</th>
+<th>OverallCond</th>
+<th>YearBuilt</th>
+<th>YearRemodAdd</th>
+<th>RoofStyle</th>
+<th>RoofMatl</th>
+<th>Exterior1st</th>
+<th>Exterior2nd</th>
+<th>MasVnrType</th>
+<th>MasVnrArea</th>
+<th>ExterQual</th>
+<th>ExterCond</th>
+<th>Foundation</th>
+<th>BsmtQual</th>
+<th>BsmtCond</th>
+<th>BsmtExposure</th>
+<th>BsmtFinType1</th>
+<th>BsmtFinSF1</th>
+<th>BsmtFinType2</th>
+<th>BsmtFinSF2</th>
+<th>BsmtUnfSF</th>
+<th>TotalBsmtSF</th>
+<th>Heating</th>
+<th>HeatingQC</th>
+<th>CentralAir</th>
+<th>Electrical</th>
+<th>1stFlrSF</th>
+<th>2ndFlrSF</th>
+<th>LowQualFinSF</th>
+<th>GrLivArea</th>
+<th>BsmtFullBath</th>
+<th>BsmtHalfBath</th>
+<th>FullBath</th>
+<th>HalfBath</th>
+<th>BedroomAbvGr</th>
+<th>KitchenAbvGr</th>
+<th>KitchenQual</th>
+<th>TotRmsAbvGrd</th>
+<th>Functional</th>
+<th>Fireplaces</th>
+<th>FireplaceQu</th>
+<th>GarageType</th>
+<th>GarageYrBlt</th>
+<th>GarageFinish</th>
+<th>GarageCars</th>
+<th>GarageArea</th>
+<th>GarageQual</th>
+<th>GarageCond</th>
+<th>PavedDrive</th>
+<th>WoodDeckSF</th>
+<th>OpenPorchSF</th>
+<th>EnclosedPorch</th>
+<th>3SsnPorch</th>
+<th>ScreenPorch</th>
+<th>PoolArea</th>
+<th>PoolQC</th>
+<th>Fence</th>
+<th>MiscFeature</th>
+<th>MiscVal</th>
+<th>MoSold</th>
+<th>YrSold</th>
+<th>SaleType</th>
+<th>SaleCondition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>RL</td>
+<td>65.0</td>
+<td>8450</td>
+<td>Pave</td>
+<td></td>
+<td>Reg</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>Inside</td>
+<td>Gtl</td>
+<td>CollgCr</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>7</td>
+<td>5</td>
+<td>2003</td>
+<td>2003</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>VinylSd</td>
+<td>VinylSd</td>
+<td>BrkFace</td>
+<td>196.0</td>
+<td>Gd</td>
+<td>TA</td>
+<td>PConc</td>
+<td>Gd</td>
+<td>TA</td>
+<td>No</td>
+<td>GLQ</td>
+<td>706</td>
+<td>Unf</td>
+<td>0</td>
+<td>150</td>
+<td>856</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>856</td>
+<td>854</td>
+<td>0</td>
+<td>1710</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>Gd</td>
+<td>8</td>
+<td>Typ</td>
+<td>0</td>
+<td></td>
+<td>Attchd</td>
+<td>2003.0</td>
+<td>RFn</td>
+<td>2</td>
+<td>548</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td>0</td>
+<td>61</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>2</td>
+<td>2008</td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>RL</td>
+<td>80.0</td>
+<td>9600</td>
+<td>Pave</td>
+<td></td>
+<td>Reg</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>FR2</td>
+<td>Gtl</td>
+<td>Veenker</td>
+<td>Feedr</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>1Story</td>
+<td>6</td>
+<td>8</td>
+<td>1976</td>
+<td>1976</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>MetalSd</td>
+<td>MetalSd</td>
+<td>None</td>
+<td>0.0</td>
+<td>TA</td>
+<td>TA</td>
+<td>CBlock</td>
+<td>Gd</td>
+<td>TA</td>
+<td>Gd</td>
+<td>ALQ</td>
+<td>978</td>
+<td>Unf</td>
+<td>0</td>
+<td>284</td>
+<td>1262</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>1262</td>
+<td>0</td>
+<td>0</td>
+<td>1262</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+<td>TA</td>
+<td>6</td>
+<td>Typ</td>
+<td>1</td>
+<td>TA</td>
+<td>Attchd</td>
+<td>1976.0</td>
+<td>RFn</td>
+<td>2</td>
+<td>460</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td>298</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>5</td>
+<td>2007</td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>3</td>
+<td>60</td>
+<td>RL</td>
+<td>68.0</td>
+<td>11250</td>
+<td>Pave</td>
+<td></td>
+<td>IR1</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>Inside</td>
+<td>Gtl</td>
+<td>CollgCr</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>7</td>
+<td>5</td>
+<td>2001</td>
+<td>2002</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>VinylSd</td>
+<td>VinylSd</td>
+<td>BrkFace</td>
+<td>162.0</td>
+<td>Gd</td>
+<td>TA</td>
+<td>PConc</td>
+<td>Gd</td>
+<td>TA</td>
+<td>Mn</td>
+<td>GLQ</td>
+<td>486</td>
+<td>Unf</td>
+<td>0</td>
+<td>434</td>
+<td>920</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>920</td>
+<td>866</td>
+<td>0</td>
+<td>1786</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>Gd</td>
+<td>6</td>
+<td>Typ</td>
+<td>1</td>
+<td>TA</td>
+<td>Attchd</td>
+<td>2001.0</td>
+<td>RFn</td>
+<td>2</td>
+<td>608</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td>0</td>
+<td>42</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>9</td>
+<td>2008</td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>4</td>
+<td>70</td>
+<td>RL</td>
+<td>60.0</td>
+<td>9550</td>
+<td>Pave</td>
+<td></td>
+<td>IR1</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>Corner</td>
+<td>Gtl</td>
+<td>Crawfor</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>7</td>
+<td>5</td>
+<td>1915</td>
+<td>1970</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>Wd Sdng</td>
+<td>Wd Shng</td>
+<td>None</td>
+<td>0.0</td>
+<td>TA</td>
+<td>TA</td>
+<td>BrkTil</td>
+<td>TA</td>
+<td>Gd</td>
+<td>No</td>
+<td>ALQ</td>
+<td>216</td>
+<td>Unf</td>
+<td>0</td>
+<td>540</td>
+<td>756</td>
+<td>GasA</td>
+<td>Gd</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>961</td>
+<td>756</td>
+<td>0</td>
+<td>1717</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+<td>Gd</td>
+<td>7</td>
+<td>Typ</td>
+<td>1</td>
+<td>Gd</td>
+<td>Detchd</td>
+<td>1998.0</td>
+<td>Unf</td>
+<td>3</td>
+<td>642</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td>0</td>
+<td>35</td>
+<td>272</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>2</td>
+<td>2006</td>
+<td>WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td>5</td>
+<td>60</td>
+<td>RL</td>
+<td>84.0</td>
+<td>14260</td>
+<td>Pave</td>
+<td></td>
+<td>IR1</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>FR2</td>
+<td>Gtl</td>
+<td>NoRidge</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>8</td>
+<td>5</td>
+<td>2000</td>
+<td>2000</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>VinylSd</td>
+<td>VinylSd</td>
+<td>BrkFace</td>
+<td>350.0</td>
+<td>Gd</td>
+<td>TA</td>
+<td>PConc</td>
+<td>Gd</td>
+<td>TA</td>
+<td>Av</td>
+<td>GLQ</td>
+<td>655</td>
+<td>Unf</td>
+<td>0</td>
+<td>490</td>
+<td>1145</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>1145</td>
+<td>1053</td>
+<td>0</td>
+<td>2198</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>Gd</td>
+<td>9</td>
+<td>Typ</td>
+<td>1</td>
+<td>TA</td>
+<td>Attchd</td>
+<td>2000.0</td>
+<td>RFn</td>
+<td>3</td>
+<td>836</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td>192</td>
+<td>84</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+<td>12</td>
+<td>2008</td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+</tbody>
+</table>
+<p>Now use the <code>.info()</code> method to find that datatypes on all of the columns (including the target!)</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1460 entries, 0 to 1459
+Data columns (total 81 columns):
+Id               1460 non-null int64
+MSSubClass       1460 non-null int64
+MSZoning         1460 non-null object
+LotFrontage      1201 non-null float64
+LotArea          1460 non-null int64
+Street           1460 non-null object
+Alley            91 non-null object
+LotShape         1460 non-null object
+LandContour      1460 non-null object
+Utilities        1460 non-null object
+LotConfig        1460 non-null object
+LandSlope        1460 non-null object
+Neighborhood     1460 non-null object
+Condition1       1460 non-null object
+Condition2       1460 non-null object
+BldgType         1460 non-null object
+HouseStyle       1460 non-null object
+OverallQual      1460 non-null int64
+OverallCond      1460 non-null int64
+YearBuilt        1460 non-null int64
+YearRemodAdd     1460 non-null int64
+RoofStyle        1460 non-null object
+RoofMatl         1460 non-null object
+Exterior1st      1460 non-null object
+Exterior2nd      1460 non-null object
+MasVnrType       1452 non-null object
+MasVnrArea       1452 non-null float64
+ExterQual        1460 non-null object
+ExterCond        1460 non-null object
+Foundation       1460 non-null object
+BsmtQual         1423 non-null object
+BsmtCond         1423 non-null object
+BsmtExposure     1422 non-null object
+BsmtFinType1     1423 non-null object
+BsmtFinSF1       1460 non-null int64
+BsmtFinType2     1422 non-null object
+BsmtFinSF2       1460 non-null int64
+BsmtUnfSF        1460 non-null int64
+TotalBsmtSF      1460 non-null int64
+Heating          1460 non-null object
+HeatingQC        1460 non-null object
+CentralAir       1460 non-null object
+Electrical       1459 non-null object
+1stFlrSF         1460 non-null int64
+2ndFlrSF         1460 non-null int64
+LowQualFinSF     1460 non-null int64
+GrLivArea        1460 non-null int64
+BsmtFullBath     1460 non-null int64
+BsmtHalfBath     1460 non-null int64
+FullBath         1460 non-null int64
+HalfBath         1460 non-null int64
+BedroomAbvGr     1460 non-null int64
+KitchenAbvGr     1460 non-null int64
+KitchenQual      1460 non-null object
+TotRmsAbvGrd     1460 non-null int64
+Functional       1460 non-null object
+Fireplaces       1460 non-null int64
+FireplaceQu      770 non-null object
+GarageType       1379 non-null object
+GarageYrBlt      1379 non-null float64
+GarageFinish     1379 non-null object
+GarageCars       1460 non-null int64
+GarageArea       1460 non-null int64
+GarageQual       1379 non-null object
+GarageCond       1379 non-null object
+PavedDrive       1460 non-null object
+WoodDeckSF       1460 non-null int64
+OpenPorchSF      1460 non-null int64
+EnclosedPorch    1460 non-null int64
+3SsnPorch        1460 non-null int64
+ScreenPorch      1460 non-null int64
+PoolArea         1460 non-null int64
+PoolQC           7 non-null object
+Fence            281 non-null object
+MiscFeature      54 non-null object
+MiscVal          1460 non-null int64
+MoSold           1460 non-null int64
+YrSold           1460 non-null int64
+SaleType         1460 non-null object
+SaleCondition    1460 non-null object
+SalePrice        1460 non-null int64
+dtypes: float64(3), int64(35), object(43)
+memory usage: 924.0+ KB
+</code></pre></div>
+<p>Now use the <code>.describe()</code> method on the full data set to get the min,max,mean and other values for each column. Try adding in the <code>.transpose()</code> method to make it a little more readable.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>count</th>
+<th>mean</th>
+<th>std</th>
+<th>min</th>
+<th>25%</th>
+<th>50%</th>
+<th>75%</th>
+<th>max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1460.0</td>
+<td>730.5</td>
+<td>421.6100093688479</td>
+<td>1.0</td>
+<td>365.75</td>
+<td>730.5</td>
+<td>1095.25</td>
+<td>1460.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>56.897260273972606</td>
+<td>42.30057099381035</td>
+<td>20.0</td>
+<td>20.0</td>
+<td>50.0</td>
+<td>70.0</td>
+<td>190.0</td>
+</tr>
+<tr>
+<td>1201.0</td>
+<td>70.04995836802665</td>
+<td>24.284751774483183</td>
+<td>21.0</td>
+<td>59.0</td>
+<td>69.0</td>
+<td>80.0</td>
+<td>313.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>10516.828082191782</td>
+<td>9981.264932379147</td>
+<td>1300.0</td>
+<td>7553.5</td>
+<td>9478.5</td>
+<td>11601.5</td>
+<td>215245.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>6.0993150684931505</td>
+<td>1.3829965467415923</td>
+<td>1.0</td>
+<td>5.0</td>
+<td>6.0</td>
+<td>7.0</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>5.575342465753424</td>
+<td>1.1127993367127367</td>
+<td>1.0</td>
+<td>5.0</td>
+<td>5.0</td>
+<td>6.0</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1971.267808219178</td>
+<td>30.202904042525265</td>
+<td>1872.0</td>
+<td>1954.0</td>
+<td>1973.0</td>
+<td>2000.0</td>
+<td>2010.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1984.8657534246574</td>
+<td>20.645406807709396</td>
+<td>1950.0</td>
+<td>1967.0</td>
+<td>1994.0</td>
+<td>2004.0</td>
+<td>2010.0</td>
+</tr>
+<tr>
+<td>1452.0</td>
+<td>103.68526170798899</td>
+<td>181.06620658721818</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>166.0</td>
+<td>1600.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>443.6397260273973</td>
+<td>456.09809084092456</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>383.5</td>
+<td>712.25</td>
+<td>5644.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>46.54931506849315</td>
+<td>161.31927280654057</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1474.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>567.2404109589041</td>
+<td>441.8669552924342</td>
+<td>0.0</td>
+<td>223.0</td>
+<td>477.5</td>
+<td>808.0</td>
+<td>2336.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1057.4294520547944</td>
+<td>438.7053244594705</td>
+<td>0.0</td>
+<td>795.75</td>
+<td>991.5</td>
+<td>1298.25</td>
+<td>6110.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1162.626712328767</td>
+<td>386.5877380410738</td>
+<td>334.0</td>
+<td>882.0</td>
+<td>1087.0</td>
+<td>1391.25</td>
+<td>4692.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>346.99246575342465</td>
+<td>436.5284358862591</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>728.0</td>
+<td>2065.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>5.844520547945206</td>
+<td>48.623081433519125</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>572.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1515.463698630137</td>
+<td>525.4803834232027</td>
+<td>334.0</td>
+<td>1129.5</td>
+<td>1464.0</td>
+<td>1776.75</td>
+<td>5642.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>0.42534246575342466</td>
+<td>0.5189106060897992</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>0.057534246575342465</td>
+<td>0.23875264627920764</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1.5650684931506849</td>
+<td>0.5509158012954318</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>0.38287671232876713</td>
+<td>0.5028853810928973</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>2.8664383561643834</td>
+<td>0.8157780441442212</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>8.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1.0465753424657533</td>
+<td>0.22033819838402977</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>6.517808219178082</td>
+<td>1.625393290584064</td>
+<td>2.0</td>
+<td>5.0</td>
+<td>6.0</td>
+<td>7.0</td>
+<td>14.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>0.613013698630137</td>
+<td>0.6446663863122344</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>1379.0</td>
+<td>1978.5061638868744</td>
+<td>24.689724768590214</td>
+<td>1900.0</td>
+<td>1961.0</td>
+<td>1980.0</td>
+<td>2002.0</td>
+<td>2010.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>1.7671232876712328</td>
+<td>0.7473150101111116</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>472.9801369863014</td>
+<td>213.80484145338076</td>
+<td>0.0</td>
+<td>334.5</td>
+<td>480.0</td>
+<td>576.0</td>
+<td>1418.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>94.2445205479452</td>
+<td>125.33879435172359</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>168.0</td>
+<td>857.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>46.66027397260274</td>
+<td>66.25602767664974</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>25.0</td>
+<td>68.0</td>
+<td>547.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>21.954109589041096</td>
+<td>61.11914860172879</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>552.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>3.4095890410958902</td>
+<td>29.317330556782203</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>508.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>15.060958904109588</td>
+<td>55.757415281874486</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>480.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>2.758904109589041</td>
+<td>40.17730694453043</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>738.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>43.489041095890414</td>
+<td>496.1230244579311</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>15500.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>6.321917808219178</td>
+<td>2.7036262083595197</td>
+<td>1.0</td>
+<td>5.0</td>
+<td>6.0</td>
+<td>8.0</td>
+<td>12.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>2007.8157534246575</td>
+<td>1.328095120552104</td>
+<td>2006.0</td>
+<td>2007.0</td>
+<td>2008.0</td>
+<td>2009.0</td>
+<td>2010.0</td>
+</tr>
+<tr>
+<td>1460.0</td>
+<td>180921.19589041095</td>
+<td>79442.50288288663</td>
+<td>34900.0</td>
+<td>129975.0</td>
+<td>163000.0</td>
+<td>214000.0</td>
+<td>755000.0</td>
+</tr>
+</tbody>
+</table>
+<p>Now lets code up a script to create a bar chart that counts the number of missing values in each of the predictor columns. Intutively, we could suggest that a feature with a lot of missing values might not be important. This may or may not be true, but it's important to know what is and isn't there to begin with.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_16_0.png" /></p>
+<h2 id="iiifeature-engineering-data-cleaning"><strong>III.Feature engineering &amp; Data Cleaning</strong><a class="headerlink" href="#iiifeature-engineering-data-cleaning" title="Permanent link">&para;</a></h2>
+<p>Cleaning data and manipulating features is a major part of any project. In this part of a data science project we solve problems such as:</p>
+<ul>
+<li>Turning categorical (string) variables into numerical ones</li>
+<li>Dealing with missing values by changing them or removing them</li>
+<li>Dealing with outliers by changing them or removing them</li>
+<li>Make corrections to data types so machine learning algorithms can read them; e.g. removing a dollar sign to conver <code>'$4.51'</code> to <code>4.51</code> so it's a float</li>
+<li>Grouping columns of different data types to be dealt with differently</li>
+</ul>
+<p>First, lets seperate the numerical predictors from the cateogircal (string) ones. Do this by going through the list of columns and selecting those with <code>.dtypes(column)=='object'</code> for categorical, and not equal for numerical.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<p>Now lets look at the categorical features. Print the shape and display the head of the table.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>(1460, 43)
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>MSZoning</th>
+<th>Street</th>
+<th>Alley</th>
+<th>LotShape</th>
+<th>LandContour</th>
+<th>Utilities</th>
+<th>LotConfig</th>
+<th>LandSlope</th>
+<th>Neighborhood</th>
+<th>Condition1</th>
+<th>Condition2</th>
+<th>BldgType</th>
+<th>HouseStyle</th>
+<th>RoofStyle</th>
+<th>RoofMatl</th>
+<th>Exterior1st</th>
+<th>Exterior2nd</th>
+<th>MasVnrType</th>
+<th>ExterQual</th>
+<th>ExterCond</th>
+<th>Foundation</th>
+<th>BsmtQual</th>
+<th>BsmtCond</th>
+<th>BsmtExposure</th>
+<th>BsmtFinType1</th>
+<th>BsmtFinType2</th>
+<th>Heating</th>
+<th>HeatingQC</th>
+<th>CentralAir</th>
+<th>Electrical</th>
+<th>KitchenQual</th>
+<th>Functional</th>
+<th>FireplaceQu</th>
+<th>GarageType</th>
+<th>GarageFinish</th>
+<th>GarageQual</th>
+<th>GarageCond</th>
+<th>PavedDrive</th>
+<th>PoolQC</th>
+<th>Fence</th>
+<th>MiscFeature</th>
+<th>SaleType</th>
+<th>SaleCondition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RL</td>
+<td>Pave</td>
+<td></td>
+<td>Reg</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>Inside</td>
+<td>Gtl</td>
+<td>CollgCr</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>VinylSd</td>
+<td>VinylSd</td>
+<td>BrkFace</td>
+<td>Gd</td>
+<td>TA</td>
+<td>PConc</td>
+<td>Gd</td>
+<td>TA</td>
+<td>No</td>
+<td>GLQ</td>
+<td>Unf</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>Gd</td>
+<td>Typ</td>
+<td></td>
+<td>Attchd</td>
+<td>RFn</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>RL</td>
+<td>Pave</td>
+<td></td>
+<td>Reg</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>FR2</td>
+<td>Gtl</td>
+<td>Veenker</td>
+<td>Feedr</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>1Story</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>MetalSd</td>
+<td>MetalSd</td>
+<td>None</td>
+<td>TA</td>
+<td>TA</td>
+<td>CBlock</td>
+<td>Gd</td>
+<td>TA</td>
+<td>Gd</td>
+<td>ALQ</td>
+<td>Unf</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>TA</td>
+<td>Typ</td>
+<td>TA</td>
+<td>Attchd</td>
+<td>RFn</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>RL</td>
+<td>Pave</td>
+<td></td>
+<td>IR1</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>Inside</td>
+<td>Gtl</td>
+<td>CollgCr</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>VinylSd</td>
+<td>VinylSd</td>
+<td>BrkFace</td>
+<td>Gd</td>
+<td>TA</td>
+<td>PConc</td>
+<td>Gd</td>
+<td>TA</td>
+<td>Mn</td>
+<td>GLQ</td>
+<td>Unf</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>Gd</td>
+<td>Typ</td>
+<td>TA</td>
+<td>Attchd</td>
+<td>RFn</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>RL</td>
+<td>Pave</td>
+<td></td>
+<td>IR1</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>Corner</td>
+<td>Gtl</td>
+<td>Crawfor</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>Wd Sdng</td>
+<td>Wd Shng</td>
+<td>None</td>
+<td>TA</td>
+<td>TA</td>
+<td>BrkTil</td>
+<td>TA</td>
+<td>Gd</td>
+<td>No</td>
+<td>ALQ</td>
+<td>Unf</td>
+<td>GasA</td>
+<td>Gd</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>Gd</td>
+<td>Typ</td>
+<td>Gd</td>
+<td>Detchd</td>
+<td>Unf</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>WD</td>
+<td>Abnorml</td>
+</tr>
+<tr>
+<td>RL</td>
+<td>Pave</td>
+<td></td>
+<td>IR1</td>
+<td>Lvl</td>
+<td>AllPub</td>
+<td>FR2</td>
+<td>Gtl</td>
+<td>NoRidge</td>
+<td>Norm</td>
+<td>Norm</td>
+<td>1Fam</td>
+<td>2Story</td>
+<td>Gable</td>
+<td>CompShg</td>
+<td>VinylSd</td>
+<td>VinylSd</td>
+<td>BrkFace</td>
+<td>Gd</td>
+<td>TA</td>
+<td>PConc</td>
+<td>Gd</td>
+<td>TA</td>
+<td>Av</td>
+<td>GLQ</td>
+<td>Unf</td>
+<td>GasA</td>
+<td>Ex</td>
+<td>Y</td>
+<td>SBrkr</td>
+<td>Gd</td>
+<td>Typ</td>
+<td>TA</td>
+<td>Attchd</td>
+<td>RFn</td>
+<td>TA</td>
+<td>TA</td>
+<td>Y</td>
+<td></td>
+<td></td>
+<td></td>
+<td>WD</td>
+<td>Normal</td>
+</tr>
+</tbody>
+</table>
+<p>Now we have to convert this categorical data into numerical data. This is done using the pandas <code>.get_dummies(data)</code> function, which basically makes a new column for each categorical variable in a given column, and puts a value of 1 if that category is present for that row. The down side of doing this is the number of variables then blows up, which we will deal with later during feature selection.</p>
+<p>Acting on the original table <code>df</code>, we get dummies of the categories, drop the categories from the table <code>df</code> and then concatenate the dummies to table <code>df</code>. This will lead us with only numbers in our dataframe, no strings.</p>
+<p>If you did it right you should now have 290 columns.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>MSSubClass</th>
+<th>LotFrontage</th>
+<th>LotArea</th>
+<th>OverallQual</th>
+<th>OverallCond</th>
+<th>YearBuilt</th>
+<th>YearRemodAdd</th>
+<th>MasVnrArea</th>
+<th>BsmtFinSF1</th>
+<th>BsmtFinSF2</th>
+<th>BsmtUnfSF</th>
+<th>TotalBsmtSF</th>
+<th>1stFlrSF</th>
+<th>2ndFlrSF</th>
+<th>LowQualFinSF</th>
+<th>GrLivArea</th>
+<th>BsmtFullBath</th>
+<th>BsmtHalfBath</th>
+<th>FullBath</th>
+<th>HalfBath</th>
+<th>BedroomAbvGr</th>
+<th>KitchenAbvGr</th>
+<th>TotRmsAbvGrd</th>
+<th>Fireplaces</th>
+<th>GarageYrBlt</th>
+<th>GarageCars</th>
+<th>GarageArea</th>
+<th>WoodDeckSF</th>
+<th>OpenPorchSF</th>
+<th>EnclosedPorch</th>
+<th>3SsnPorch</th>
+<th>ScreenPorch</th>
+<th>PoolArea</th>
+<th>MiscVal</th>
+<th>MoSold</th>
+<th>YrSold</th>
+<th>SalePrice</th>
+<th>MSZoning_C (all)</th>
+<th>MSZoning_FV</th>
+<th>MSZoning_RH</th>
+<th>MSZoning_RL</th>
+<th>MSZoning_RM</th>
+<th>Street_Grvl</th>
+<th>Street_Pave</th>
+<th>Alley_Grvl</th>
+<th>Alley_Pave</th>
+<th>LotShape_IR1</th>
+<th>LotShape_IR2</th>
+<th>LotShape_IR3</th>
+<th>LotShape_Reg</th>
+<th>LandContour_Bnk</th>
+<th>LandContour_HLS</th>
+<th>LandContour_Low</th>
+<th>LandContour_Lvl</th>
+<th>Utilities_AllPub</th>
+<th>Utilities_NoSeWa</th>
+<th>LotConfig_Corner</th>
+<th>LotConfig_CulDSac</th>
+<th>LotConfig_FR2</th>
+<th>LotConfig_FR3</th>
+<th>LotConfig_Inside</th>
+<th>LandSlope_Gtl</th>
+<th>LandSlope_Mod</th>
+<th>LandSlope_Sev</th>
+<th>Neighborhood_Blmngtn</th>
+<th>Neighborhood_Blueste</th>
+<th>Neighborhood_BrDale</th>
+<th>Neighborhood_BrkSide</th>
+<th>Neighborhood_ClearCr</th>
+<th>Neighborhood_CollgCr</th>
+<th>Neighborhood_Crawfor</th>
+<th>Neighborhood_Edwards</th>
+<th>Neighborhood_Gilbert</th>
+<th>Neighborhood_IDOTRR</th>
+<th>Neighborhood_MeadowV</th>
+<th>Neighborhood_Mitchel</th>
+<th>Neighborhood_NAmes</th>
+<th>Neighborhood_NPkVill</th>
+<th>Neighborhood_NWAmes</th>
+<th>Neighborhood_NoRidge</th>
+<th>Neighborhood_NridgHt</th>
+<th>Neighborhood_OldTown</th>
+<th>Neighborhood_SWISU</th>
+<th>Neighborhood_Sawyer</th>
+<th>Neighborhood_SawyerW</th>
+<th>Neighborhood_Somerst</th>
+<th>Neighborhood_StoneBr</th>
+<th>Neighborhood_Timber</th>
+<th>Neighborhood_Veenker</th>
+<th>Condition1_Artery</th>
+<th>Condition1_Feedr</th>
+<th>Condition1_Norm</th>
+<th>Condition1_PosA</th>
+<th>Condition1_PosN</th>
+<th>Condition1_RRAe</th>
+<th>Condition1_RRAn</th>
+<th>Condition1_RRNe</th>
+<th>Condition1_RRNn</th>
+<th>Condition2_Artery</th>
+<th>Condition2_Feedr</th>
+<th>Condition2_Norm</th>
+<th>Condition2_PosA</th>
+<th>Condition2_PosN</th>
+<th>Condition2_RRAe</th>
+<th>Condition2_RRAn</th>
+<th>Condition2_RRNn</th>
+<th>BldgType_1Fam</th>
+<th>BldgType_2fmCon</th>
+<th>BldgType_Duplex</th>
+<th>BldgType_Twnhs</th>
+<th>BldgType_TwnhsE</th>
+<th>HouseStyle_1.5Fin</th>
+<th>HouseStyle_1.5Unf</th>
+<th>HouseStyle_1Story</th>
+<th>HouseStyle_2.5Fin</th>
+<th>HouseStyle_2.5Unf</th>
+<th>HouseStyle_2Story</th>
+<th>HouseStyle_SFoyer</th>
+<th>HouseStyle_SLvl</th>
+<th>RoofStyle_Flat</th>
+<th>RoofStyle_Gable</th>
+<th>RoofStyle_Gambrel</th>
+<th>RoofStyle_Hip</th>
+<th>RoofStyle_Mansard</th>
+<th>RoofStyle_Shed</th>
+<th>RoofMatl_ClyTile</th>
+<th>RoofMatl_CompShg</th>
+<th>RoofMatl_Membran</th>
+<th>RoofMatl_Metal</th>
+<th>RoofMatl_Roll</th>
+<th>RoofMatl_Tar&amp;Grv</th>
+<th>RoofMatl_WdShake</th>
+<th>RoofMatl_WdShngl</th>
+<th>Exterior1st_AsbShng</th>
+<th>Exterior1st_AsphShn</th>
+<th>Exterior1st_BrkComm</th>
+<th>Exterior1st_BrkFace</th>
+<th>Exterior1st_CBlock</th>
+<th>Exterior1st_CemntBd</th>
+<th>Exterior1st_HdBoard</th>
+<th>Exterior1st_ImStucc</th>
+<th>Exterior1st_MetalSd</th>
+<th>Exterior1st_Plywood</th>
+<th>Exterior1st_Stone</th>
+<th>Exterior1st_Stucco</th>
+<th>Exterior1st_VinylSd</th>
+<th>Exterior1st_Wd Sdng</th>
+<th>Exterior1st_WdShing</th>
+<th>Exterior2nd_AsbShng</th>
+<th>Exterior2nd_AsphShn</th>
+<th>Exterior2nd_Brk Cmn</th>
+<th>Exterior2nd_BrkFace</th>
+<th>Exterior2nd_CBlock</th>
+<th>Exterior2nd_CmentBd</th>
+<th>Exterior2nd_HdBoard</th>
+<th>Exterior2nd_ImStucc</th>
+<th>Exterior2nd_MetalSd</th>
+<th>Exterior2nd_Other</th>
+<th>Exterior2nd_Plywood</th>
+<th>Exterior2nd_Stone</th>
+<th>Exterior2nd_Stucco</th>
+<th>Exterior2nd_VinylSd</th>
+<th>Exterior2nd_Wd Sdng</th>
+<th>Exterior2nd_Wd Shng</th>
+<th>MasVnrType_BrkCmn</th>
+<th>MasVnrType_BrkFace</th>
+<th>MasVnrType_None</th>
+<th>MasVnrType_Stone</th>
+<th>ExterQual_Ex</th>
+<th>ExterQual_Fa</th>
+<th>ExterQual_Gd</th>
+<th>ExterQual_TA</th>
+<th>ExterCond_Ex</th>
+<th>ExterCond_Fa</th>
+<th>ExterCond_Gd</th>
+<th>ExterCond_Po</th>
+<th>ExterCond_TA</th>
+<th>Foundation_BrkTil</th>
+<th>Foundation_CBlock</th>
+<th>Foundation_PConc</th>
+<th>Foundation_Slab</th>
+<th>Foundation_Stone</th>
+<th>Foundation_Wood</th>
+<th>BsmtQual_Ex</th>
+<th>BsmtQual_Fa</th>
+<th>BsmtQual_Gd</th>
+<th>BsmtQual_TA</th>
+<th>BsmtCond_Fa</th>
+<th>BsmtCond_Gd</th>
+<th>BsmtCond_Po</th>
+<th>BsmtCond_TA</th>
+<th>BsmtExposure_Av</th>
+<th>BsmtExposure_Gd</th>
+<th>BsmtExposure_Mn</th>
+<th>BsmtExposure_No</th>
+<th>BsmtFinType1_ALQ</th>
+<th>BsmtFinType1_BLQ</th>
+<th>BsmtFinType1_GLQ</th>
+<th>BsmtFinType1_LwQ</th>
+<th>BsmtFinType1_Rec</th>
+<th>BsmtFinType1_Unf</th>
+<th>BsmtFinType2_ALQ</th>
+<th>BsmtFinType2_BLQ</th>
+<th>BsmtFinType2_GLQ</th>
+<th>BsmtFinType2_LwQ</th>
+<th>BsmtFinType2_Rec</th>
+<th>BsmtFinType2_Unf</th>
+<th>Heating_Floor</th>
+<th>Heating_GasA</th>
+<th>Heating_GasW</th>
+<th>Heating_Grav</th>
+<th>Heating_OthW</th>
+<th>Heating_Wall</th>
+<th>HeatingQC_Ex</th>
+<th>HeatingQC_Fa</th>
+<th>HeatingQC_Gd</th>
+<th>HeatingQC_Po</th>
+<th>HeatingQC_TA</th>
+<th>CentralAir_N</th>
+<th>CentralAir_Y</th>
+<th>Electrical_FuseA</th>
+<th>Electrical_FuseF</th>
+<th>Electrical_FuseP</th>
+<th>Electrical_Mix</th>
+<th>Electrical_SBrkr</th>
+<th>KitchenQual_Ex</th>
+<th>KitchenQual_Fa</th>
+<th>KitchenQual_Gd</th>
+<th>KitchenQual_TA</th>
+<th>Functional_Maj1</th>
+<th>Functional_Maj2</th>
+<th>Functional_Min1</th>
+<th>Functional_Min2</th>
+<th>Functional_Mod</th>
+<th>Functional_Sev</th>
+<th>Functional_Typ</th>
+<th>FireplaceQu_Ex</th>
+<th>FireplaceQu_Fa</th>
+<th>FireplaceQu_Gd</th>
+<th>FireplaceQu_Po</th>
+<th>FireplaceQu_TA</th>
+<th>GarageType_2Types</th>
+<th>GarageType_Attchd</th>
+<th>GarageType_Basment</th>
+<th>GarageType_BuiltIn</th>
+<th>GarageType_CarPort</th>
+<th>GarageType_Detchd</th>
+<th>GarageFinish_Fin</th>
+<th>GarageFinish_RFn</th>
+<th>GarageFinish_Unf</th>
+<th>GarageQual_Ex</th>
+<th>GarageQual_Fa</th>
+<th>GarageQual_Gd</th>
+<th>GarageQual_Po</th>
+<th>GarageQual_TA</th>
+<th>GarageCond_Ex</th>
+<th>GarageCond_Fa</th>
+<th>GarageCond_Gd</th>
+<th>GarageCond_Po</th>
+<th>GarageCond_TA</th>
+<th>PavedDrive_N</th>
+<th>PavedDrive_P</th>
+<th>PavedDrive_Y</th>
+<th>PoolQC_Ex</th>
+<th>PoolQC_Fa</th>
+<th>PoolQC_Gd</th>
+<th>Fence_GdPrv</th>
+<th>Fence_GdWo</th>
+<th>Fence_MnPrv</th>
+<th>Fence_MnWw</th>
+<th>MiscFeature_Gar2</th>
+<th>MiscFeature_Othr</th>
+<th>MiscFeature_Shed</th>
+<th>MiscFeature_TenC</th>
+<th>SaleType_COD</th>
+<th>SaleType_CWD</th>
+<th>SaleType_Con</th>
+<th>SaleType_ConLD</th>
+<th>SaleType_ConLI</th>
+<th>SaleType_ConLw</th>
+<th>SaleType_New</th>
+<th>SaleType_Oth</th>
+<th>SaleType_WD</th>
+<th>SaleCondition_Abnorml</th>
+<th>SaleCondition_AdjLand</th>
+<th>SaleCondition_Alloca</th>
+<th>SaleCondition_Family</th>
+<th>SaleCondition_Normal</th>
+<th>SaleCondition_Partial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>60</td>
+<td>65.0</td>
+<td>8450</td>
+<td>7</td>
+<td>5</td>
+<td>2003</td>
+<td>2003</td>
+<td>196.0</td>
+<td>706</td>
+<td>0</td>
+<td>150</td>
+<td>856</td>
+<td>856</td>
+<td>854</td>
+<td>0</td>
+<td>1710</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>8</td>
+<td>0</td>
+<td>2003.0</td>
+<td>2</td>
+<td>548</td>
+<td>0</td>
+<td>61</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>2008</td>
+<td>208500</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20</td>
+<td>80.0</td>
+<td>9600</td>
+<td>6</td>
+<td>8</td>
+<td>1976</td>
+<td>1976</td>
+<td>0.0</td>
+<td>978</td>
+<td>0</td>
+<td>284</td>
+<td>1262</td>
+<td>1262</td>
+<td>0</td>
+<td>0</td>
+<td>1262</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>1976.0</td>
+<td>2</td>
+<td>460</td>
+<td>298</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>2007</td>
+<td>181500</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>60</td>
+<td>68.0</td>
+<td>11250</td>
+<td>7</td>
+<td>5</td>
+<td>2001</td>
+<td>2002</td>
+<td>162.0</td>
+<td>486</td>
+<td>0</td>
+<td>434</td>
+<td>920</td>
+<td>920</td>
+<td>866</td>
+<td>0</td>
+<td>1786</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>6</td>
+<td>1</td>
+<td>2001.0</td>
+<td>2</td>
+<td>608</td>
+<td>0</td>
+<td>42</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>9</td>
+<td>2008</td>
+<td>223500</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>70</td>
+<td>60.0</td>
+<td>9550</td>
+<td>7</td>
+<td>5</td>
+<td>1915</td>
+<td>1970</td>
+<td>0.0</td>
+<td>216</td>
+<td>0</td>
+<td>540</td>
+<td>756</td>
+<td>961</td>
+<td>756</td>
+<td>0</td>
+<td>1717</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>1</td>
+<td>7</td>
+<td>1</td>
+<td>1998.0</td>
+<td>3</td>
+<td>642</td>
+<td>0</td>
+<td>35</td>
+<td>272</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>2006</td>
+<td>140000</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>60</td>
+<td>84.0</td>
+<td>14260</td>
+<td>8</td>
+<td>5</td>
+<td>2000</td>
+<td>2000</td>
+<td>350.0</td>
+<td>655</td>
+<td>0</td>
+<td>490</td>
+<td>1145</td>
+<td>1145</td>
+<td>1053</td>
+<td>0</td>
+<td>2198</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>9</td>
+<td>1</td>
+<td>2000.0</td>
+<td>3</td>
+<td>836</td>
+<td>192</td>
+<td>84</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>12</td>
+<td>2008</td>
+<td>250000</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ivfeature-selection"><strong>IV.Feature Selection</strong><a class="headerlink" href="#ivfeature-selection" title="Permanent link">&para;</a></h2>
+<p>Now that we've engineered our features, we should create a dataframe or series that shows the pearson correlation coefficient between the sale price and each feature. Get the histogram of this dataframe. Also print the standard deviation, mean, max and min values of the correlations.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">#Type your solution here. It should have the following output</span>
+</span></code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_27_0.png" /></p>
+<div class="language-text highlight"><pre><span></span><code>Max Correlation:  1.0
+Min Correlation:  -0.589043523409763
+Mean Correlation:  0.03910614218619199
+Standard Deviation:  0.2129964043689813
+
+SalePrice                1.000000
+OverallQual              0.790982
+GrLivArea                0.708624
+GarageCars               0.640409
+GarageArea               0.623431
+TotalBsmtSF              0.613581
+1stFlrSF                 0.605852
+FullBath                 0.560664
+BsmtQual_Ex              0.553105
+TotRmsAbvGrd             0.533723
+YearBuilt                0.522897
+YearRemodAdd             0.507101
+KitchenQual_Ex           0.504094
+Foundation_PConc         0.497734
+GarageYrBlt              0.486362
+MasVnrArea               0.477493
+Fireplaces               0.466929
+ExterQual_Gd             0.452466
+ExterQual_Ex             0.451164
+BsmtFinType1_GLQ         0.434597
+HeatingQC_Ex             0.434543
+GarageFinish_Fin         0.419678
+Neighborhood_NridgHt     0.402149
+BsmtFinSF1               0.386420
+SaleType_New             0.357509
+SaleCondition_Partial    0.352060
+LotFrontage              0.351799
+FireplaceQu_Gd           0.339329
+GarageType_Attchd        0.335961
+MasVnrType_Stone         0.330476
+                           ...   
+Fence_MnPrv             -0.140613
+Neighborhood_BrkSide    -0.143648
+SaleCondition_Normal    -0.153990
+KitchenQual_Fa          -0.157199
+Exterior1st_Wd Sdng     -0.158619
+Exterior2nd_Wd Sdng     -0.161800
+Exterior2nd_MetalSd     -0.162389
+HouseStyle_1.5Fin       -0.163466
+Neighborhood_IDOTRR     -0.164056
+Exterior1st_MetalSd     -0.167068
+Neighborhood_Edwards    -0.179949
+Neighborhood_NAmes      -0.188513
+Neighborhood_OldTown    -0.192189
+Electrical_FuseA        -0.193978
+Foundation_BrkTil       -0.204117
+PavedDrive_N            -0.212630
+RoofStyle_Gable         -0.224744
+SaleType_WD             -0.242598
+CentralAir_N            -0.251328
+BsmtExposure_No         -0.263600
+LotShape_Reg            -0.267672
+MSZoning_RM             -0.288065
+HeatingQC_TA            -0.312677
+Foundation_CBlock       -0.343263
+GarageType_Detchd       -0.354141
+MasVnrType_None         -0.374468
+GarageFinish_Unf        -0.410608
+BsmtQual_TA             -0.452394
+KitchenQual_TA          -0.519298
+ExterQual_TA            -0.589044
+Name: SalePrice, Length: 290, dtype: float64
+</code></pre></div>
+<p>So the if the correlation between the sale price and a feature is very small or close to zero, it's valid to say that such a feature has little to no influence on our price. The important features are going to be ones that have a significantly large enough absolute value of their correlation coefficient.</p>
+<p>Thus we could specify a threshold of correlation that selects only features whose correlation with the SalePrice has an absolute value greater than that threshold. This could take a little bit of guess work, but we will try with a correlation greater than <span class="arithmatex">\(\|\pm0.4\|\)</span>.</p>
+<p>Using the series of correlation coefficients just made, select all the ones with an absolute value greater than 0.4, and select the features corresponding to the coefficients. You should have 26 features. Call these features the <code>key_features</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>26
+</code></pre></div>
+<p>Now lets scatter plot each key feature compared to the sale price. This will allow us to detect things like skews in the data, which we can impute/transform in the following steps.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_0.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_1.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_2.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_3.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_4.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_5.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_6.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_7.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_8.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_9.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_10.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_11.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_12.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_13.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_14.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_15.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_16.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_17.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_18.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_19.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_20.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_21.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_22.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_23.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_24.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_31_25.png" /></p>
+<p>Its very obvious that some of these features are very skewed. Moreover, the magnitude of some of the features are on significantly different scales. For example, the values for <code>GarageFinish_Unf</code> have a range of 0 and 1, but the feature <code>GarageYrBuilt</code> ranges from 1900 to 2010. Machine learning models work best with unskewed data which is all on a similar scale.</p>
+<p>So what can we do? We can use a data-transformation technique that allows us to get all the data on the same scale, and (hopefully) removes the skew in the data.</p>
+<p>Do this in several steps:</p>
+<ul>
+<li>For the missing values in the original data frame, impute the mean value into each column.</li>
+<li>From <code>sklearn.preprocessing</code>, use <code>StandardScaler</code> to transform our our columns into a standardized format</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1">#Code your solution here</span>
+</span></code></pre></div>
+<p>And what about our target variable, the <code>SalePrice</code>? Should it be transformed as well?
+Using the <code>seaborn</code> function <code>.distplot(data,fit=norm)</code>, plot the sale price. Below it, plot the <code>stats.probplot(data,plot=plt)</code> as well and see what it looks like. Make you have imported all the right things.</p>
+<p>This accomplishes two tasks:</p>
+<ul>
+<li><a href="https://seaborn.pydata.org/generated/seaborn.distplot.html">Distplot</a> will allow us to see how close our SalePrices are to a normal distribution, by creating a historgram.</li>
+<li><a href="https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.stats.probplot.html">Probplot</a> will allow us to see a Q-Q plot of our SalesPrices, generating a probability of sample data against the quantiles of a normal distribution.</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_35_0.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_35_1.png" /></p>
+<p>Now do the same thing again, but transform the <code>SalePrice</code> data with the function <code>np.log1p(data)</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_37_0.png" /></p>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_37_1.png" /></p>
+<p>As we can see the transformation of <code>np.log1p(y)</code> makes our SalePrice data much more normal and minimizes skew. This is better for linear regression.</p>
+<p>So what does this mean? It means that every price will be transformed such that <span class="arithmatex">\(y \rightarrow \ln(y+1)\)</span></p>
+<p>This also means that when our model predicts values, we must transform it back to its original form to get the predicted price, using the inverse function <span class="arithmatex">\(\ln(y+1) \rightarrow e^{y}-1\)</span>, or 
+<code>np.exp(y)-1</code>.</p>
+<h2 id="vmodel-building"><strong>V.Model Building</strong><a class="headerlink" href="#vmodel-building" title="Permanent link">&para;</a></h2>
+<p>Ridge regression is one of the most common regularization techniques used in regession tasks. It is easy to use, and we'll let it be our model we work with. We need to fit it to our data to tune it's hyperparameter. We can find the right hyperparameter using cross validation.</p>
+<ul>
+<li>In the following cell, import Ridge and cross_val_score</li>
+<li>Create a function that returns the square root of a five fold cross validation of the negative value for the scoring metric. <code>scoring="neg_mean_squared_error"</code></li>
+<li>Using the <code>np.linspace()</code> function, create a series of values, between 50 and 70, that we will test as our hyperparameter alpha.</li>
+<li>Create another series that finds that average cross validation score for each alpha.</li>
+<li>Make a matplotlib plot that has the alphas on the x-axis, and the RMSE on the vertical.</li>
+<li>For this to work, you should have used <code>StandardScaler()</code> to transform the features, and <code>np.log1p(y)</code> on the <code>SalePrice</code>.</li>
+<li>Find the minimum value of alpha - this will be our hyperparameter.</li>
+</ul>
+<p>If you did everything right, it should the plots should look like the next one:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Best alpha for ridge is:  62.6530612244898
+</code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_40_1.png" /></p>
+<h2 id="vimodel-development-testing"><strong>VI.Model Development &amp; Testing</strong><a class="headerlink" href="#vimodel-development-testing" title="Permanent link">&para;</a></h2>
+<p>So now that we've cleaned data, selected the features, transformed them and found the right hyperparameter for our model, it's time to use test our model.
+Heres what we do next:</p>
+<ul>
+<li>Do a <code>train_test_split</code> with a 77-33% split to test</li>
+<li>Convert the predicted values into actual prices via the inverse function, <code>np.exp(y_pred)+1</code>, and convert the test values of y to actual prices.</li>
+<li>Plot the predicted prices vs the actual prices </li>
+<li>Plot the residuals of the predictions using the <code>ResidualsPlot</code> from the <code>yellowbricks.regressor</code> package (install it if you dont have it)!</li>
+<li>Using the yellow bricks plot, observe the normality of errors and R2 score of the train and test set!</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>If you did it correctly, your plot should looks like this:
+</code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_42_1.png" /></p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Your plot should look like this:
+</code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_43_1.png" /></p>
+<p>Lastly, make a horizontal bar plot of the coefficients in the ridge model.
+* Use the attribute <code>model.coef_</code> to get the coefficients. Put them into a series</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1">#Code your solution here, it should have the following output</span>
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code>Your plot should look like this.
+</code></pre></div>
+<p><img alt="png" src="https://raw.githubusercontent.com/JoeGanser/Regression_Teaching_Tutorial/master/images/output_45_1.png" /></p>
+<h2 id="viisources-credits"><strong>VII.Sources &amp; Credits</strong><a class="headerlink" href="#viisources-credits" title="Permanent link">&para;</a></h2>
+<p>Some of these tutorials were very helpful in writing this lesson.</p>
+<ul>
+<li><a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques#tutorials">https://www.kaggle.com/c/house-prices-advanced-regression-techniques#tutorials</a></li>
+<li><a href="https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python">https://www.kaggle.com/pmarcelino/comprehensive-data-exploration-with-python</a></li>
+<li><a href="https://www.kaggle.com/dgawlik/house-prices-eda">https://www.kaggle.com/dgawlik/house-prices-eda</a></li>
+<li><a href="https://www.kaggle.com/juliencs/a-study-on-regression-applied-to-the-ames-dataset">https://www.kaggle.com/juliencs/a-study-on-regression-applied-to-the-ames-dataset</a></li>
+<li><a href="https://www.kaggle.com/apapiu/regularized-linear-models">https://www.kaggle.com/apapiu/regularized-linear-models</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../2018-12-15-mushroom-classification/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Mushroom Data - edible or poisonous?">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Mushroom Data - edible or poisonous?
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../2017-12-21-Bitcoin-Ethereum-timeseries/" class="md-footer__link md-footer__link--next" aria-label="Next: 2017 Bitcoin Bubble - Time series forecasting">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                2017 Bitcoin Bubble - Time series forecasting
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jkginfinite" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/joe-ganser-aa9b8b132/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.annotate", "content.code.copy", "content.tooltips", "header.autohide", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
