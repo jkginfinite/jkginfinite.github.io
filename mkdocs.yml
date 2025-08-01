@@ -183,8 +183,8 @@ nav:
         - Notebook: lectures/spark/intro_to_spark/intro_to_spark_nb.md
       - Splink - Slides: lectures/spark/splink/splink_slides.md
     - Intro to Python:
-      - Object Oriented Programming part 1:
-        - Notebook: lectures/Intro_to_Python/oop/OOP_part1.md
+     <!-- - Object Oriented Programming part 1: -->
+     <!--   - Notebook: lectures/Intro_to_Python/oop/OOP_part1.md -->
       - Object Oriented Programming part 2:
         - Notebook: lectures/Intro_to_Python/oop/OOP_part2.md
       - Dynamic Programming:
